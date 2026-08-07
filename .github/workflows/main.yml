@@ -11,6 +11,9 @@ on:
   - cron: '30 */3 * * *'
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -37,13 +40,9 @@ jobs:
       run: python3 overview.py
 
     - name: Commit new outputs
-      env:
-        ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
       run: |
         git config --global user.name 'github-statistics'
         git config --global user.email 'applex250@users.noreply.github.com'
-        git remote set-url origin "https://x-access-token:${ACCESS_TOKEN}@github.com/applex250/github-statistics.git"
-        git config --unset-all "http.https://github.com/.extraheader" || true
         git add output || true
         git commit -m 'Update outputs' || true
         git push
