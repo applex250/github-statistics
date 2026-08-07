@@ -23,7 +23,9 @@ import html
 OWNER = "applex250"          # GitHub 用户名
 REPO = "github-statistics"   # 本生成器所在仓库名
 OUTPUT_DIR = "output"
-RAW_BASE = f"https://raw.githubusercontent.com/{OWNER}/{REPO}/refs/heads/main/output"
+# 图片走 jsdelivr CDN(国内可达),并带 commit SHA 以绕过 CDN 缓存滞后
+CDN_SHA = os.environ.get("SHA", "main")
+RAW_BASE = f"https://cdn.jsdelivr.net/gh/{OWNER}/{REPO}@{CDN_SHA}/output"
 
 # ---------------------------------------------------------------- 通用工具
 def fmt_num(n: int) -> str:

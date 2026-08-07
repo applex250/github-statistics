@@ -36,7 +36,7 @@ jobs:
       env:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
 
-    - name: Generate SVG cards + profile README
+    - name: Generate SVG cards
       run: python3 overview.py
 
     - name: Commit new outputs
@@ -46,6 +46,12 @@ jobs:
         git add output || true
         git commit -m 'Update outputs' || true
         git push
+
+    - name: Generate profile README (jsdelivr CDN + commit SHA)
+      run: |
+        SHA=$(git rev-parse HEAD)
+        echo "README 图片 URL 使用 jsdelivr CDN, commit SHA=${SHA}"
+        SHA=$SHA python3 overview.py
 
     - name: Checkout profile repository
       uses: actions/checkout@v6
