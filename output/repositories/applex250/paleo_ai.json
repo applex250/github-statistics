@@ -1,0 +1,16 @@
+{
+  "name": "paleo_ai",
+  "owner": "applex250",
+  "languages": [
+    {
+      "name": "TypeScript",
+      "color": "#3178c6"
+    },
+    {
+      "name": "Python",
+      "color": "#3572A5"
+    }
+  ],
+  "stars": 0,
+  "forks": 0
+}

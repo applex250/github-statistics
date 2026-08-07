@@ -1,0 +1,21 @@
+{
+  "name": "rpu",
+  "owner": "applex250",
+  "description": "RK3588 YOLOv8-Seg 三核NPU并行推理",
+  "languages": [
+    {
+      "name": "C",
+      "color": "#555555"
+    },
+    {
+      "name": "C++",
+      "color": "#f34b7d"
+    },
+    {
+      "name": "Python",
+      "color": "#3572A5"
+    }
+  ],
+  "stars": 0,
+  "forks": 0
+}

@@ -1,0 +1,17 @@
+{
+  "name": "clawdbot-watchdog",
+  "owner": "applex250",
+  "description": "openclaw Gateway 监控守护进程 - 自动恢复和实时状态监控",
+  "languages": [
+    {
+      "name": "JavaScript",
+      "color": "#f1e05a"
+    },
+    {
+      "name": "Batchfile",
+      "color": "#C1F12E"
+    }
+  ],
+  "stars": 2,
+  "forks": 0
+}

@@ -1,0 +1,16 @@
+{
+  "name": "myyolo",
+  "owner": "applex250",
+  "languages": [
+    {
+      "name": "Python",
+      "color": "#3572A5"
+    },
+    {
+      "name": "Shell",
+      "color": "#89e051"
+    }
+  ],
+  "stars": 0,
+  "forks": 0
+}

@@ -1,0 +1,21 @@
+{
+  "name": "hermes-agent",
+  "owner": "NousResearch",
+  "description": "The agent that grows with you",
+  "languages": [
+    {
+      "name": "Python",
+      "color": "#3572A5"
+    },
+    {
+      "name": "TypeScript",
+      "color": "#3178c6"
+    },
+    {
+      "name": "JavaScript",
+      "color": "#f1e05a"
+    }
+  ],
+  "stars": 226675,
+  "forks": 44240
+}

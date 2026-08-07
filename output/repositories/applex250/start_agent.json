@@ -1,0 +1,13 @@
+{
+  "name": "start_agent",
+  "owner": "applex250",
+  "description": "Agent project",
+  "languages": [
+    {
+      "name": "Python",
+      "color": "#3572A5"
+    }
+  ],
+  "stars": 0,
+  "forks": 0
+}

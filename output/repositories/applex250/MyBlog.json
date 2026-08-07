@@ -1,0 +1,17 @@
+{
+  "name": "MyBlog",
+  "owner": "applex250",
+  "description": "我的博客",
+  "languages": [
+    {
+      "name": "Astro",
+      "color": "#ff5a03"
+    },
+    {
+      "name": "TypeScript",
+      "color": "#3178c6"
+    }
+  ],
+  "stars": 0,
+  "forks": 0
+}

@@ -1,0 +1,17 @@
+{
+  "name": "github-statistics",
+  "owner": "applex250",
+  "description": "GitHub Statistics: 自动编译统计并生成主页 SVG 卡片(Java 采集 + Python 生成)",
+  "languages": [
+    {
+      "name": "Java",
+      "color": "#b07219"
+    },
+    {
+      "name": "Python",
+      "color": "#3572A5"
+    }
+  ],
+  "stars": 0,
+  "forks": 0
+}

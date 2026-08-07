@@ -1,0 +1,20 @@
+{
+  "name": "Intelligent-Access",
+  "owner": "zn-27",
+  "languages": [
+    {
+      "name": "Python",
+      "color": "#3572A5"
+    },
+    {
+      "name": "C++",
+      "color": "#f34b7d"
+    },
+    {
+      "name": "C",
+      "color": "#555555"
+    }
+  ],
+  "stars": 1,
+  "forks": 0
+}
