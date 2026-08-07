@@ -1,0 +1,47 @@
+{
+  viewer {
+    repositories(
+      first: 100
+      orderBy: {field: STARGAZERS, direction: DESC}
+      isFork: false
+      after: __OWNED_CURSOR__
+      ownerAffiliations: [OWNER, COLLABORATOR]
+    ) {
+      pageInfo {
+        hasNextPage
+        endCursor
+      }
+      totalCount
+      nodes {
+        nameWithOwner
+        stargazers {
+          totalCount
+        }
+        issues(states: CLOSED) {
+          totalCount
+        }
+        forkCount
+      }
+    }
+    repositoriesContributedTo(
+      first: 100
+      orderBy: {field: STARGAZERS, direction: DESC}
+      after: __CONTRIBUTED_CURSOR__
+      includeUserRepositories: false
+      contributionTypes: [REPOSITORY]
+    ) {
+      pageInfo {
+        hasNextPage
+        endCursor
+      }
+      totalCount
+      nodes {
+        nameWithOwner
+        stargazers {
+          totalCount
+        }
+        forkCount
+      }
+    }
+  }
+}
