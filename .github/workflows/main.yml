@@ -43,6 +43,7 @@ jobs:
         git config --global user.name 'github-statistics'
         git config --global user.email 'applex250@users.noreply.github.com'
         git remote set-url origin "https://x-access-token:${ACCESS_TOKEN}@github.com/applex250/github-statistics.git"
+        git config --unset-all "http.https://github.com/.extraheader" || true
         git add output || true
         git commit -m 'Update outputs' || true
         git push
