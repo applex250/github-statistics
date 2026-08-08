@@ -46,11 +46,11 @@
             </text>
         </g>
     <g class="repo-info-fade" style="animation-delay: 3s">
-<text fill="black" x="28.638333333333335px" y="123.51833333333335px" width="39.0267px" height="12.63px" font-size="12.63px" dominant-baseline="middle">
-                Liquid
+<text fill="black" x="28.638333333333335px" y="123.51833333333335px" width="26.0178px" height="12.63px" font-size="12.63px" dominant-baseline="middle">
+                HTML
             </text>
-<text fill="black" x="158.32px" y="123.51833333333335px" width="65.0445px" height="12.63px" font-size="12.63px" dominant-baseline="middle">
-                JavaScript
+<text fill="black" x="158.32px" y="123.51833333333335px" width="26.0178px" height="12.63px" font-size="12.63px" dominant-baseline="middle">
+                SCSS
             </text>
         <text fill="black" x="386.2972px" y="123.51833333333335px" width="6.5676px" height="15.436666666666667px" font-size="12.63px" dominant-baseline="middle">
                     0
@@ -67,5 +67,5 @@
             </path>
         </svg>
     </g>
-        </mask><g class="repo-info-fade" style="animation-delay: 3s"><circle cx="18.815px" cy="122.51833333333335px" r="6.315px" fill="#67b8de" opacity="65%" /><circle cx="148.49666666666667px" cy="122.51833333333335px" r="6.315px" fill="#f1e05a" opacity="65%" /></g>
+        </mask><g class="repo-info-fade" style="animation-delay: 3s"><circle cx="18.815px" cy="122.51833333333335px" r="6.315px" fill="#e34c26" opacity="65%" /><circle cx="148.49666666666667px" cy="122.51833333333335px" r="6.315px" fill="#c6538c" opacity="65%" /></g>
 </svg>

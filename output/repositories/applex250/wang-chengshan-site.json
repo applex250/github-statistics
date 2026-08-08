@@ -3,12 +3,12 @@
   "owner": "applex250",
   "languages": [
     {
-      "name": "Liquid",
-      "color": "#67b8de"
+      "name": "HTML",
+      "color": "#e34c26"
     },
     {
-      "name": "JavaScript",
-      "color": "#f1e05a"
+      "name": "SCSS",
+      "color": "#c6538c"
     }
   ],
   "stars": 0,
