@@ -1,0 +1,13 @@
+{
+  "name": "gpt-ppt-make",
+  "owner": "applex250",
+  "description": "提示词→PPTD→PPTX 全本地化生成系统: 零 Kimi 云端依赖的 PPT 生成管线",
+  "languages": [
+    {
+      "name": "Python",
+      "color": "#3572A5"
+    }
+  ],
+  "stars": 0,
+  "forks": 0
+}
