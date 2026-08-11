@@ -1,0 +1,17 @@
+{
+  "name": "websearch-deepseek-go",
+  "owner": "applex250",
+  "description": "通用 MCP Server — 基于 DeepSeek 原生联网搜索 API 的 Web Search 工具，支持 opencode Go 网关 (Responses API)。fork from lyumeng/websearch-deepseek",
+  "languages": [
+    {
+      "name": "TypeScript",
+      "color": "#3178c6"
+    },
+    {
+      "name": "JavaScript",
+      "color": "#f1e05a"
+    }
+  ],
+  "stars": 0,
+  "forks": 0
+}
