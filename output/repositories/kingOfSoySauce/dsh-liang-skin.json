@@ -1,0 +1,17 @@
+{
+  "name": "dsh-liang-skin",
+  "owner": "kingOfSoySauce",
+  "description": "DeepSeek Harness 滑动变阻器皮肤",
+  "languages": [
+    {
+      "name": "TypeScript",
+      "color": "#3178c6"
+    },
+    {
+      "name": "JavaScript",
+      "color": "#f1e05a"
+    }
+  ],
+  "stars": 5,
+  "forks": 1
+}
