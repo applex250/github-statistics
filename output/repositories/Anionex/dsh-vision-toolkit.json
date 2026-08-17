@@ -1,7 +1,7 @@
 {
   "name": "dsh-vision-toolkit",
   "owner": "Anionex",
-  "description": "让纯文本模型更好地做视觉任务的DeepSeek Harness插件：带意图的图片问答、长截图 OCR、UI 还原等｜DeepSeek Harness-native integration for agent-vision-toolkit: image Q\u0026A, long-screenshot OCR, UI restoration, grounding, pixel diff, Artifacts, and Web UI.",
+  "description": "[dsh]为纯文本模型设计更强大的视觉工具箱：安装免费使用、粘贴图片直接识别、多张图片问答、截图到前端UI 还原等｜DeepSeek Harness-native integration for agent-vision-toolkit: image Q\u0026A, long-screenshot OCR, UI restoration, grounding, pixel diff, Artifacts, and Web UI.",
   "languages": [
     {
       "name": "TypeScript",
@@ -12,6 +12,6 @@
       "color": "#f1e05a"
     }
   ],
-  "stars": 601,
+  "stars": 610,
   "forks": 30
 }
