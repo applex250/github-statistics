@@ -1,0 +1,13 @@
+{
+  "name": "qwen3.8_27b_web",
+  "owner": "applex250",
+  "description": "拾光咖啡 · 单文件网页演示（HTML/CSS/JS）",
+  "languages": [
+    {
+      "name": "HTML",
+      "color": "#e34c26"
+    }
+  ],
+  "stars": 0,
+  "forks": 0
+}
