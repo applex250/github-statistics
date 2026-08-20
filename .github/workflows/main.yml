@@ -38,6 +38,8 @@ jobs:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
 
     - name: Generate SVG cards (website style, no old visuals)
+      env:
+        SHA: ${{ github.sha }}
       run: python3 overview.py
 
     - name: Commit new outputs
