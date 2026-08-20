@@ -1,13 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
 <svg xmlns="http://www.w3.org/2000/svg" width="200px" height="60px" viewBox="0 0 200 60">
   <style>
-    @keyframes kf-slide { 0%{transform:translate(0%,40%);opacity:0} 100%{transform:translate(0%,0%);opacity:1} }
-    @keyframes kf-glitch { 0%{opacity:0} 30%{opacity:1} 40%{opacity:0.2} 60%{opacity:1} 100%{opacity:1} }
-    @keyframes kf-drop { 0%{transform:translateY(-40%);opacity:0} 100%{transform:translateY(0%);opacity:1} }
-    .m{opacity:0;animation-duration:1.5s;animation-fill-mode:forwards;animation-timing-function:ease-out}
-    .s{animation-name:kf-slide} .g{animation-name:kf-glitch} .d{animation-name:kf-drop}
+    @keyframes kf-trans { 0%{transform:translateY(-30px)} 100%{transform:translateY(0px)} }
+    .m{animation:kf-trans 1.2s ease-out forwards}
   </style>
-  <rect class="m s" x="2" y="2" width="60" height="50" fill="#FCEE0A"/>
-  <rect class="m g" x="70" y="2" width="60" height="50" fill="#00F0FF"/>
-  <rect class="m d" x="138" y="2" width="60" height="50" fill="#FF003C"/>
+  <rect class="m" x="2" y="8" width="60" height="40" fill="#FCEE0A"/>
+  <rect x="70" y="8" width="60" height="40" fill="#00F0FF"/>
+  <rect x="138" y="8" width="60" height="40" fill="#FF003C"/>
 </svg>
