@@ -38,7 +38,7 @@ public class UserStatsJob extends Job {
         if (CONTRIB_YEARS.size() == 0) {
             JsonArray years = RESPONSES.get("years").get()
                     .get("data").getAsJsonObject()
-                    .get("user").getAsJsonObject()
+                    .get("viewer").getAsJsonObject()
                     .get("contributionsCollection").getAsJsonObject()
                     .get("contributionYears").getAsJsonArray();
             for (JsonElement y : years) {
