@@ -1,0 +1,17 @@
+{
+  "name": "harness-landing",
+  "owner": "applex250",
+  "description": "Static replica of the deepseek.com/harness developer-preview landing page with layered background FX (fluid glow, particle mesh, 3D whale cluster particles)",
+  "languages": [
+    {
+      "name": "JavaScript",
+      "color": "#f1e05a"
+    },
+    {
+      "name": "CSS",
+      "color": "#663399"
+    }
+  ],
+  "stars": 0,
+  "forks": 0
+}
