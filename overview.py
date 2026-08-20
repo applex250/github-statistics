@@ -129,10 +129,11 @@ def keyframes(i: int, tr: str, delay: str) -> str:
 
 def gen_overview(stats: dict) -> str:
     css = (
-        '            * {\n                font-family: "Trebuchet MS", sans-serif;\n            }\n'
+        '            ' + FONT_IMPORT + '\n'
+        '            * {\n                font-family: "Rajdhani", "Trebuchet MS", sans-serif;\n            }\n'
         '            .overview-background {\n                opacity: 0%;\n'
         '                animation: fade-in-overview-background 0.75s forwards ease-in-out;\n'
-        '                animation-delay: 0s;\n            }\n'
+        '                animation-delay: 0s;            }\n'
         '            @keyframes fade-in-overview-background {\n'
         '                0% {\n                    opacity: 0%;\n                }\n'
         '                100% {\n                    opacity: 100%;\n                }\n            }\n'
@@ -147,10 +148,10 @@ def gen_overview(stats: dict) -> str:
         )
         cards.append(
             f'        <g class="card{i}" width="170.23999999999998px" height="256px" style="animation-delay: {delay}">\n'
-            f'        <svg viewBox="0 0 24 24" width="76.8px" height="76.8px" x="46.71999999999999px" fill="white">\n'
+            f'        <svg viewBox="0 0 24 24" width="76.8px" height="76.8px" x="46.71999999999999px" fill="{CP["cyan"]}">\n'
             f'{icon_paths}        </svg>\n'
-            f'        <text y="107.52px" x="85.11999999999999px" font-size="30.72px" text-anchor="middle" fill="white">\n            {esc(num)}\n        </text>\n'
-            f'        <text y="130.56px" x="85.11999999999999px" font-size="15.36px" text-anchor="middle" fill="white">\n            {esc(label)}\n        </text>\n'
+            f'        <text y="107.52px" x="85.11999999999999px" font-size="30.72px" text-anchor="middle" fill="{CP["yellow"]}" font-family="{FONT_NUM}" font-weight="700" letter-spacing="1px" filter="url(#neonGlowY)">\n            {esc(num)}\n        </text>\n'
+            f'        <text y="130.56px" x="85.11999999999999px" font-size="15.36px" text-anchor="middle" fill="{CP["cyan"]}" font-family="{FONT_BODY}" font-weight="500" letter-spacing="2px">\n            {esc(label)}\n        </text>\n'
             f'    </g>\n'
         )
     return (
@@ -160,25 +161,29 @@ def gen_overview(stats: dict) -> str:
         '        <svg width="896.0px" height="256px">\n'
         '            <defs>\n'
         '                <linearGradient id="overviewGradient" gradientTransform="rotate(90)">\n'
-        '                    <stop offset="0%" stop-color="#0a0a0a" stop-opacity="0.84" />\n'
-        '                    <stop offset="52%" stop-color="#2a2a2a" stop-opacity="0.54" />\n'
-        '                    <stop offset="100%" stop-color="#6b7280" stop-opacity="0.34" />\n'
+        f'                    <stop offset="0%" stop-color="{CP["grad_top"]}" stop-opacity="0.92" />\n'
+        f'                    <stop offset="52%" stop-color="{CP["grad_mid"]}" stop-opacity="0.88" />\n'
+        f'                    <stop offset="100%" stop-color="{CP["grad_bot"]}" stop-opacity="0.94" />\n'
         '                </linearGradient>\n'
-        '                <linearGradient id="overviewHighlight" gradientTransform="rotate(90)">\n'
-        '                    <stop offset="0%" stop-color="#ffffff" stop-opacity="0.18" />\n'
-        '                    <stop offset="18%" stop-color="#ffffff" stop-opacity="0.05" />\n'
-        '                    <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />\n'
-        '                </linearGradient>\n'
-        '                <filter id="frostedShadow" x="-8%" y="-8%" width="116%" height="116%">\n'
-        '                    <feDropShadow dx="0" dy="4" stdDeviation="14" flood-color="#0a0a0a" flood-opacity="0.22" />\n'
-        '                    <feGaussianBlur stdDeviation="0.4" />\n'
+        '                <filter id="neonGlowY" x="-20%" y="-20%" width="140%" height="140%">\n'
+        f'                    <feDropShadow dx="0" dy="0" stdDeviation="6" flood-color="{CP["yellow"]}" flood-opacity="0.45" />\n'
         '                </filter>\n'
+        '                <filter id="neonGlowC" x="-20%" y="-20%" width="140%" height="140%">\n'
+        f'                    <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="{CP["cyan"]}" flood-opacity="0.35" />\n'
+        '                </filter>\n'
+        '                <pattern id="scanlines" width="4" height="4" patternUnits="userSpaceOnUse">\n'
+        '                    <rect width="4" height="1" fill="#ffffff" opacity="0.04" />\n'
+        '                </pattern>\n'
+        f'                <clipPath id="clipBig"><path d="{PATH_BIG}" /></clipPath>\n'
         "            </defs>\n"
-        '            <rect width="896.0px" height="256px" rx="15px" fill="#0d1117" opacity="0.0" />\n'
-        '            <rect class="overview-background" width="896.0px" height="256px" rx="15px" fill="url(\'#overviewGradient\')" stroke="rgba(255,255,255,0.14)" stroke-width="1.2" filter="url(#frostedShadow)" style="backdrop-filter: blur(16px);" mask="url(\'#overviewContents\')" />\n'
-        '            <rect width="896.0px" height="256px" rx="15px" fill="url(\'#overviewHighlight\')" opacity="0.9" mask="url(\'#overviewContents\')" style="pointer-events:none" />\n'
+        f'            <path class="overview-background" d="{PATH_BIG}" fill="url(\'#overviewGradient\')" stroke="rgba(252,238,10,0.8)" stroke-width="1.5" clip-path="url(#clipBig)" mask="url(\'#overviewContents\')" />\n'
+        f'            <path d="{PATH_BIG_INNER}" fill="none" stroke="{CP["cyan"]}" stroke-width="0.75" opacity="0.6" />\n'
+        f'            <path d="{PATH_BIG}" fill="url(\'#scanlines\')" clip-path="url(#clipBig)" mask="url(\'#overviewContents\')" style="pointer-events:none" />\n'
+        f'            <line x1="22" y1="0" x2="874" y2="0" stroke="{CP["yellow"]}" stroke-width="2" opacity="0.5" />\n'
+        f'            <path d="{CORNER_TL}" fill="none" stroke="{CP["yellow"]}" stroke-width="3" />\n'
+        f'            <path d="{CORNER_BR}" fill="none" stroke="{CP["yellow"]}" stroke-width="3" />\n'
         '            <mask id="overviewContents">\n'
-        '                <rect width="896.0px" height="256px" rx="15px" fill="white" />\n'
+        f'                <path d="{PATH_BIG}" fill="white" />\n'
         + "".join(cards)
         + "        </mask>\n        </svg>\n</svg>\n"
     )
