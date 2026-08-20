@@ -208,12 +208,12 @@ def gen_repo_card(repo: dict, index: int = 0) -> str:
     # 图标 + 名称 + owner
     fade_blocks.append(
         f'        <g class="repo-info-fade" style="animation-delay: {f(g1)}">\n'
-        f'        <svg fill="white" viewBox="0 0 24 24" width="36.48666666666667px" height="36.48666666666667px" x="8.0px" y="12.411666666666667px">\n'
+        f'        <svg fill="{CP["cyan"]}" viewBox="0 0 24 24" width="36.48666666666667px" height="36.48666666666667px" x="8.0px" y="12.411666666666667px">\n'
         f'            <path fill-rule="evenodd" d="{ICON_REPO_1}">\n            </path>\n'
         f'            <path d="{ICON_REPO_2}">\n            </path>\n'
         f'        </svg>\n'
-        f'            <text fill="white" x="52.90666666666667px" y="28.55px" width="396.0" height="21.05px" font-size="21.05px">\n                {esc(name)}\n            </text>\n'
-        f'            <text fill="white" x="52.90666666666667px" y="43.98666666666667px" width="396.0" height="12.63px" font-size="12.63px">\n                {esc(owner)}\n            </text>\n'
+        f'            <text fill="{CP["yellow"]}" font-family="{FONT_NUM}" font-weight="500" letter-spacing="0.5px" x="52.90666666666667px" y="28.55px" width="396.0" height="21.05px" font-size="21.05px" filter="url(#neonGlowY)">\n                {esc(name)}\n            </text>\n'
+        f'            <text fill="{CP["cyan"]}" font-family="{FONT_BODY}" x="52.90666666666667px" y="43.98666666666667px" width="396.0" height="12.63px" font-size="12.63px">\n                {esc(owner)}\n            </text>\n'
         f'        </g>\n'
     )
     # 描述
@@ -222,7 +222,7 @@ def gen_repo_card(repo: dict, index: int = 0) -> str:
     for i, line in enumerate(desc_lines):
         y = y0 + 15.436666666666667 * i
         desc_block += (
-            f'            <text fill="white" x="12.5px" y="{y}px" width="396.0" height="12.63px" font-size="12.63px">\n'
+            f'            <text fill="{CP["cyan"]}" font-family="{FONT_BODY}" x="12.5px" y="{y}px" width="396.0" height="12.63px" font-size="12.63px">\n'
             f'                {esc(line)}\n            </text>\n'
         )
     desc_block += "        </g>"
@@ -233,19 +233,19 @@ def gen_repo_card(repo: dict, index: int = 0) -> str:
     for idx, lang in enumerate(languages[:2]):
         lx = 28.638333333333335 + idx * 129.68166666666666
         lang_names += (
-            f'<text fill="white" x="{lx}px" y="123.51833333333335px" width="{max(6.5, len(lang.get("name",""))*6.50445):.4f}px" height="12.63px" font-size="12.63px" dominant-baseline="middle">\n                {esc(lang.get("name",""))}\n            </text>\n'
+            f'<text fill="{CP["text_dim"]}" font-family="{FONT_BODY}" x="{lx}px" y="123.51833333333335px" width="{max(6.5, len(lang.get("name",""))*6.50445):.4f}px" height="12.63px" font-size="12.63px" dominant-baseline="middle">\n                {esc(lang.get("name",""))}\n            </text>\n'
         )
     star_x = 335.01939999999996
     fork_x = 386.2972
     star_icon_x = 316.07439999999997
     fork_icon_x = 367.3522
     footer = (
-        f'        <text fill="white" x="{fork_x}px" y="123.51833333333335px" width="{max(6.5, len(str(forks))*6.5676):.4f}px" height="15.436666666666667px" font-size="12.63px" dominant-baseline="middle">\n                    {esc(str(forks))}\n                </text>\n'
-        f'        <svg fill="white" viewBox="0 0 24 24" width="15.436666666666667px" height="15.436666666666667px" x="{fork_icon_x}px" y="114.80000000000001px">\n'
+        f'        <text fill="{CP["yellow"]}" font-family="{FONT_NUM}" font-weight="500" x="{fork_x}px" y="123.51833333333335px" width="{max(6.5, len(str(forks))*6.5676):.4f}px" height="15.436666666666667px" font-size="12.63px" dominant-baseline="middle">\n                    {esc(str(forks))}\n                </text>\n'
+        f'        <svg fill="{CP["cyan"]}" viewBox="0 0 24 24" width="15.436666666666667px" height="15.436666666666667px" x="{fork_icon_x}px" y="114.80000000000001px">\n'
         f'            <path fill-rule="evenodd" d="{ICON_FORK_1}" /><path fill-rule="evenodd" d="{ICON_FORK_2}"></path><path fill-rule="evenodd" d="{ICON_FORK_3}">\n            </path>\n'
         f'        </svg>\n'
-        f'                <text fill="white" x="{star_x}px" y="123.51833333333335px" width="{max(6.5, len(str(stars))*6.5676):.4f}px" height="15.436666666666667px" font-size="12.63px" dominant-baseline="middle">\n                    {esc(str(stars))}\n                </text>\n'
-        f'        <svg fill="white" viewBox="0 0 24 24" width="15.436666666666667px" height="15.436666666666667px" x="{star_icon_x}px" y="114.80000000000001px">\n'
+        f'                <text fill="{CP["yellow"]}" font-family="{FONT_NUM}" font-weight="500" x="{star_x}px" y="123.51833333333335px" width="{max(6.5, len(str(stars))*6.5676):.4f}px" height="15.436666666666667px" font-size="12.63px" dominant-baseline="middle">\n                    {esc(str(stars))}\n                </text>\n'
+        f'        <svg fill="{CP["cyan"]}" viewBox="0 0 24 24" width="15.436666666666667px" height="15.436666666666667px" x="{star_icon_x}px" y="114.80000000000001px">\n'
         f'            <path fill-rule="evenodd" d="{ICON_STAR}">\n            </path>\n'
         f'        </svg>\n'
     )
@@ -268,31 +268,37 @@ def gen_repo_card(repo: dict, index: int = 0) -> str:
         "<?xml version='1.0' encoding='utf-8'?>\n"
         '<svg xmlns="http://www.w3.org/2000/svg" width="421px" height="140.33333333333334px" viewBox="0 0 421 140.33333333333334">\n'
         "        <style>\n"
-        '            * {\n                font-family: "Trebuchet MS", sans-serif;\n            }\n'
+        '            ' + FONT_IMPORT + '\n'
+        '            * {\n                font-family: "Rajdhani", "Trebuchet MS", sans-serif;\n            }\n'
         "            @keyframes repo-info-fade-in {\n                0% {\n                    opacity: 0%;\n                }\n                100% {\n                    opacity: 100%;\n                }\n            }\n"
         "            .repo-info-fade {\n                opacity: 0%;\n                animation: repo-info-fade-in 1.25s forwards ease-out;\n            }\n"
         "            .repo-info-background-fade {\n                opacity: 0%;\n                animation: repo-info-fade-in 1.25s forwards ease-in-out;\n            }\n"
         "        </style>\n"
         "        <defs>\n"
         f'            <linearGradient id="repoInfoGradient" gradientTransform="rotate(90) translate(-{grad_n},0) scale(4,2)">\n'
-        '                <stop offset="0%" stop-color="#0a0a0a" stop-opacity="0.84" />\n'
-        '                <stop offset="52%" stop-color="#2a2a2a" stop-opacity="0.54" />\n'
-        '                <stop offset="100%" stop-color="#6b7280" stop-opacity="0.34" />\n'
+        f'                <stop offset="0%" stop-color="{CP["grad_top"]}" stop-opacity="0.92" />\n'
+        f'                <stop offset="52%" stop-color="{CP["grad_mid"]}" stop-opacity="0.88" />\n'
+        f'                <stop offset="100%" stop-color="{CP["grad_bot"]}" stop-opacity="0.94" />\n'
         '            </linearGradient>\n'
-        '            <linearGradient id="cardHighlight" gradientTransform="rotate(90)">\n'
-        '                <stop offset="0%" stop-color="#ffffff" stop-opacity="0.18" />\n'
-        '                <stop offset="20%" stop-color="#ffffff" stop-opacity="0.05" />\n'
-        '                <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />\n'
-        '            </linearGradient>\n'
-        '            <filter id="cardShadow" x="-8%" y="-8%" width="116%" height="116%">\n'
-        '                <feDropShadow dx="0" dy="3" stdDeviation="10" flood-color="#0a0a0a" flood-opacity="0.22" />\n'
-        '            </filter>\n'
+        '                <filter id="neonGlowY" x="-20%" y="-20%" width="140%" height="140%">\n'
+        f'                    <feDropShadow dx="0" dy="0" stdDeviation="6" flood-color="{CP["yellow"]}" flood-opacity="0.45" />\n'
+        '                </filter>\n'
+        '                <filter id="neonGlowC" x="-20%" y="-20%" width="140%" height="140%">\n'
+        f'                    <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="{CP["cyan"]}" flood-opacity="0.35" />\n'
+        '                </filter>\n'
+        '                <pattern id="scanlines" width="4" height="4" patternUnits="userSpaceOnUse">\n'
+        '                    <rect width="4" height="1" fill="#ffffff" opacity="0.04" />\n'
+        '                </pattern>\n'
+        f'                <clipPath id="clipSmall"><path d="{PATH_SMALL}" /></clipPath>\n'
         "        </defs>\n"
-        '        <rect width="421px" height="140.33333333333334px" rx="15px" fill="#0d1117" opacity="0.0" />\n'
-        '        <rect class="repo-info-background-fade" style="animation-delay: ' + f(bg) + '" width="421px" height="140.33333333333334px" rx="15px" fill="url(\'#repoInfoGradient\')" stroke="rgba(255,255,255,0.13)" stroke-width="1.1" filter="url(#cardShadow)" mask="url(\'#repoContents\')" />\n'
-        '        <rect width="421px" height="140.33333333333334px" rx="15px" fill="url(\'#cardHighlight\')" opacity="0.9" mask="url(\'#repoContents\')" style="pointer-events:none" />\n'
-        '        <mask id="repoContents">\n'
-        '            <rect width="421px" height="140.33333333333334px" rx="15px" fill="white" />\n'
+        f'            <path class="repo-info-background-fade" style="animation-delay: ' + f(bg) + f'" d="{PATH_SMALL}" fill="url(\'#repoInfoGradient\')" stroke="rgba(252,238,10,0.7)" stroke-width="1.2" clip-path="url(#clipSmall)" mask="url(\'#repoContents\')" />\n'
+        f'            <path d="{PATH_SMALL_INNER}" fill="none" stroke="{CP["cyan"]}" stroke-width="0.75" opacity="0.6" />\n'
+        f'            <path d="{PATH_SMALL}" fill="url(\'#scanlines\')" clip-path="url(#clipSmall)" mask="url(\'#repoContents\')" style="pointer-events:none" />\n'
+        f'            <line x1="22" y1="0" x2="399" y2="0" stroke="{CP["yellow"]}" stroke-width="2" opacity="0.5" />\n'
+        f'            <path d="{CORNER_TL}" fill="none" stroke="{CP["yellow"]}" stroke-width="3" />\n'
+        f'            <path d="{CORNER_BR_S}" fill="none" stroke="{CP["yellow"]}" stroke-width="3" />\n'
+        '            <mask id="repoContents">\n'
+        f'                <path d="{PATH_SMALL}" fill="white" />\n'
         + body
         + "\n        </mask>"
         + f'<g class="repo-info-fade" style="animation-delay: {f(g3)}">{lang_circles}</g>'

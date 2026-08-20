@@ -1,8 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
 <svg xmlns="http://www.w3.org/2000/svg" width="421px" height="140.33333333333334px" viewBox="0 0 421 140.33333333333334">
         <style>
+            @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600&display=swap');
             * {
-                font-family: "Trebuchet MS", sans-serif;
+                font-family: "Rajdhani", "Trebuchet MS", sans-serif;
             }
             @keyframes repo-info-fade-in {
                 0% {
@@ -23,56 +24,61 @@
         </style>
         <defs>
             <linearGradient id="repoInfoGradient" gradientTransform="rotate(90) translate(-1,0) scale(4,2)">
-                <stop offset="0%" stop-color="#0a0a0a" stop-opacity="0.84" />
-                <stop offset="52%" stop-color="#2a2a2a" stop-opacity="0.54" />
-                <stop offset="100%" stop-color="#6b7280" stop-opacity="0.34" />
+                <stop offset="0%" stop-color="#111219" stop-opacity="0.92" />
+                <stop offset="52%" stop-color="#16181F" stop-opacity="0.88" />
+                <stop offset="100%" stop-color="#0D0D12" stop-opacity="0.94" />
             </linearGradient>
-            <linearGradient id="cardHighlight" gradientTransform="rotate(90)">
-                <stop offset="0%" stop-color="#ffffff" stop-opacity="0.18" />
-                <stop offset="20%" stop-color="#ffffff" stop-opacity="0.05" />
-                <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
-            </linearGradient>
-            <filter id="cardShadow" x="-8%" y="-8%" width="116%" height="116%">
-                <feDropShadow dx="0" dy="3" stdDeviation="10" flood-color="#0a0a0a" flood-opacity="0.22" />
-            </filter>
+                <filter id="neonGlowY" x="-20%" y="-20%" width="140%" height="140%">
+                    <feDropShadow dx="0" dy="0" stdDeviation="6" flood-color="#FCEE0A" flood-opacity="0.45" />
+                </filter>
+                <filter id="neonGlowC" x="-20%" y="-20%" width="140%" height="140%">
+                    <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#00F0FF" flood-opacity="0.35" />
+                </filter>
+                <pattern id="scanlines" width="4" height="4" patternUnits="userSpaceOnUse">
+                    <rect width="4" height="1" fill="#ffffff" opacity="0.04" />
+                </pattern>
+                <clipPath id="clipSmall"><path d="M22,0 H421 V118 L399,140 H0 V22 Z" /></clipPath>
         </defs>
-        <rect width="421px" height="140.33333333333334px" rx="15px" fill="#0d1117" opacity="0.0" />
-        <rect class="repo-info-background-fade" style="animation-delay: 0.75s" width="421px" height="140.33333333333334px" rx="15px" fill="url('#repoInfoGradient')" stroke="rgba(255,255,255,0.13)" stroke-width="1.1" filter="url(#cardShadow)" mask="url('#repoContents')" />
-        <rect width="421px" height="140.33333333333334px" rx="15px" fill="url('#cardHighlight')" opacity="0.9" mask="url('#repoContents')" style="pointer-events:none" />
-        <mask id="repoContents">
-            <rect width="421px" height="140.33333333333334px" rx="15px" fill="white" />
+            <path class="repo-info-background-fade" style="animation-delay: 0.75s" d="M22,0 H421 V118 L399,140 H0 V22 Z" fill="url('#repoInfoGradient')" stroke="rgba(252,238,10,0.7)" stroke-width="1.2" clip-path="url(#clipSmall)" mask="url('#repoContents')" />
+            <path d="M25,3 H418 V115 L396,137 H3 V25 Z" fill="none" stroke="#00F0FF" stroke-width="0.75" opacity="0.6" />
+            <path d="M22,0 H421 V118 L399,140 H0 V22 Z" fill="url('#scanlines')" clip-path="url(#clipSmall)" mask="url('#repoContents')" style="pointer-events:none" />
+            <line x1="22" y1="0" x2="399" y2="0" stroke="#FCEE0A" stroke-width="2" opacity="0.5" />
+            <path d="M0,34 L0,22 L12,10" fill="none" stroke="#FCEE0A" stroke-width="3" />
+            <path d="M421,106 L421,118 L409,130" fill="none" stroke="#FCEE0A" stroke-width="3" />
+            <mask id="repoContents">
+                <path d="M22,0 H421 V118 L399,140 H0 V22 Z" fill="white" />
         <g class="repo-info-fade" style="animation-delay: 1.25s">
-        <svg fill="white" viewBox="0 0 24 24" width="36.48666666666667px" height="36.48666666666667px" x="8.0px" y="12.411666666666667px">
+        <svg fill="#00F0FF" viewBox="0 0 24 24" width="36.48666666666667px" height="36.48666666666667px" x="8.0px" y="12.411666666666667px">
             <path fill-rule="evenodd" d="M3 2.75A2.75 2.75 0 015.75 0h14.5a.75.75 0 01.75.75v20.5a.75.75 0 01-.75.75h-6a.75.75 0 010-1.5h5.25v-4H6A1.5 1.5 0 004.5 18v.75c0 .716.43 1.334 1.05 1.605a.75.75 0 01-.6 1.374A3.25 3.25 0 013 18.75v-16zM19.5 1.5V15H6c-.546 0-1.059.146-1.5.401V2.75c0-.69.56-1.25 1.25-1.25H19.5z">
             </path>
             <path d="M7 18.25a.25.25 0 01.25-.25h5a.25.25 0 01.25.25v5.01a.25.25 0 01-.397.201l-2.206-1.604a.25.25 0 00-.294 0L7.397 23.46a.25.25 0 01-.397-.2v-5.01z">
             </path>
         </svg>
-            <text fill="white" x="52.90666666666667px" y="28.55px" width="396.0" height="21.05px" font-size="21.05px">
+            <text fill="#FCEE0A" font-family="'Orbitron','Trebuchet MS',sans-serif" font-weight="500" letter-spacing="0.5px" x="52.90666666666667px" y="28.55px" width="396.0" height="21.05px" font-size="21.05px" filter="url(#neonGlowY)">
                 paleo_ai
             </text>
-            <text fill="white" x="52.90666666666667px" y="43.98666666666667px" width="396.0" height="12.63px" font-size="12.63px">
+            <text fill="#00F0FF" font-family="'Rajdhani','Trebuchet MS',sans-serif" x="52.90666666666667px" y="43.98666666666667px" width="396.0" height="12.63px" font-size="12.63px">
                 applex250
             </text>
         </g>
     <g class="repo-info-fade" style="animation-delay: 2.25s">
-<text fill="white" x="28.638333333333335px" y="123.51833333333335px" width="65.0445px" height="12.63px" font-size="12.63px" dominant-baseline="middle">
+<text fill="#B8BCC4" font-family="'Rajdhani','Trebuchet MS',sans-serif" x="28.638333333333335px" y="123.51833333333335px" width="65.0445px" height="12.63px" font-size="12.63px" dominant-baseline="middle">
                 TypeScript
             </text>
-<text fill="white" x="158.32px" y="123.51833333333335px" width="39.0267px" height="12.63px" font-size="12.63px" dominant-baseline="middle">
+<text fill="#B8BCC4" font-family="'Rajdhani','Trebuchet MS',sans-serif" x="158.32px" y="123.51833333333335px" width="39.0267px" height="12.63px" font-size="12.63px" dominant-baseline="middle">
                 Python
             </text>
-        <text fill="white" x="386.2972px" y="123.51833333333335px" width="6.5676px" height="15.436666666666667px" font-size="12.63px" dominant-baseline="middle">
+        <text fill="#FCEE0A" font-family="'Orbitron','Trebuchet MS',sans-serif" font-weight="500" x="386.2972px" y="123.51833333333335px" width="6.5676px" height="15.436666666666667px" font-size="12.63px" dominant-baseline="middle">
                     0
                 </text>
-        <svg fill="white" viewBox="0 0 24 24" width="15.436666666666667px" height="15.436666666666667px" x="367.3522px" y="114.80000000000001px">
+        <svg fill="#00F0FF" viewBox="0 0 24 24" width="15.436666666666667px" height="15.436666666666667px" x="367.3522px" y="114.80000000000001px">
             <path fill-rule="evenodd" d="M12 21a1.75 1.75 0 110-3.5 1.75 1.75 0 010 3.5zm-3.25-1.75a3.25 3.25 0 106.5 0 3.25 3.25 0 00-6.5 0zm-3-12.75a1.75 1.75 0 110-3.5 1.75 1.75 0 010 3.5zM2.5 4.75a3.25 3.25 0 106.5 0 3.25 3.25 0 00-6.5 0zM18.25 6.5a1.75 1.75 0 110-3.5 1.75 1.75 0 010 3.5zM15 4.75a3.25 3.25 0 106.5 0 3.25 3.25 0 00-6.5 0z" /><path fill-rule="evenodd" d="M6.5 7.75v1A2.25 2.25 0 008.75 11h6.5a2.25 2.25 0 002.25-2.25v-1H19v1a3.75 3.75 0 01-3.75 3.75h-6.5A3.75 3.75 0 015 8.75v-1h1.5z"></path><path fill-rule="evenodd" d="M11.25 16.25v-5h1.5v5h-1.5z">
             </path>
         </svg>
-                <text fill="white" x="335.01939999999996px" y="123.51833333333335px" width="6.5676px" height="15.436666666666667px" font-size="12.63px" dominant-baseline="middle">
+                <text fill="#FCEE0A" font-family="'Orbitron','Trebuchet MS',sans-serif" font-weight="500" x="335.01939999999996px" y="123.51833333333335px" width="6.5676px" height="15.436666666666667px" font-size="12.63px" dominant-baseline="middle">
                     0
                 </text>
-        <svg fill="white" viewBox="0 0 24 24" width="15.436666666666667px" height="15.436666666666667px" x="316.07439999999997px" y="114.80000000000001px">
+        <svg fill="#00F0FF" viewBox="0 0 24 24" width="15.436666666666667px" height="15.436666666666667px" x="316.07439999999997px" y="114.80000000000001px">
             <path fill-rule="evenodd" d="M12 .25a.75.75 0 01.673.418l3.058 6.197 6.839.994a.75.75 0 01.415 1.279l-4.948 4.823 1.168 6.811a.75.75 0 01-1.088.791L12 18.347l-6.117 3.216a.75.75 0 01-1.088-.79l1.168-6.812-4.948-4.823a.75.75 0 01.416-1.28l6.838-.993L11.328.668A.75.75 0 0112 .25zm0 2.445L9.44 7.882a.75.75 0 01-.565.41l-5.725.832 4.143 4.038a.75.75 0 01.215.664l-.978 5.702 5.121-2.692a.75.75 0 01.698 0l5.12 2.692-.977-5.702a.75.75 0 01.215-.664l4.143-4.038-5.725-.831a.75.75 0 01-.565-.41L12 2.694z">
             </path>
         </svg>
