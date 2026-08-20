@@ -1,5 +1,5 @@
 # This workflow generates HTML profile (fully rebuilt, no old gradients).
-# No longer uses overview.py SVG cards; uses gen_profile_html.py which mirrors the site CSS.
+# No longer uses overview.py SVG cards; uses overview.py which mirrors the site CSS.
 
 name: GitHub Statistics
 
@@ -37,8 +37,8 @@ jobs:
       env:
         ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
 
-    - name: Generate profile HTML (website style, no old visuals)
-      run: python3 gen_profile_html.py
+    - name: Generate SVG cards (website style, no old visuals)
+      run: python3 overview.py
 
     - name: Commit new outputs
       run: |
