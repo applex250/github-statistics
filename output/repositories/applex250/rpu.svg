@@ -23,6 +23,16 @@
             }
             @keyframes repo0 { 0%{opacity:0%;transform:translateY(28px)} 100%{opacity:100%;transform:translateY(0)} }
             .repo0 { opacity:0%; animation:repo0 1.3s forwards ease-out; }
+            @keyframes idle-hbeam { 0%{transform:translateX(0)} 100%{transform:translateX(407px)} }
+            .idle-hbeam { animation: idle-hbeam 2.8s linear infinite; }
+            @keyframes idle-hbeamy { 0%{transform:translateX(407px)} 100%{transform:translateX(0)} }
+            .idle-hbeamy { animation: idle-hbeamy 3.1s linear infinite; }
+            @keyframes idle-gflick { 0%{opacity:0.3} 6%{opacity:1} 8%{opacity:0.3} 36%{opacity:1} 39%{opacity:0.25} 66%{opacity:1} 69%{opacity:0.4} 100%{opacity:0.3} }
+            .idle-gflick { animation: idle-gflick 3.4s steps(1,end) infinite; }
+            @keyframes idle-breathe-r { 0%,100%{opacity:0.12} 50%{opacity:0.8} }
+            .idle-breathe-r { animation: idle-breathe-r 2.3s ease-in-out infinite; }
+            @keyframes idle-bflash { 0%,92%{opacity:0.15} 95%{opacity:0.9} 97%{opacity:0.2} 100%{opacity:0.15} }
+            .idle-bflash { animation: idle-bflash 2.0s steps(1,end) infinite; }
         </style>
         <defs>
             <linearGradient id="repoInfoGradient" gradientTransform="rotate(90) translate(-0,0) scale(4,2)">
@@ -50,6 +60,7 @@
             <mask id="repoContents">
                 <path d="M22,0 H421 V118 L399,140 H0 V22 Z" fill="white" />
             </mask>
+        <g clip-path="url(#clipSmall)"><rect class="idle-hbeam" x="0" y="0" width="16px" height="140px" fill="#00F0FF" opacity="0.4" /></g>
         <g class="repo-info-fade" style="animation-delay: 0.75s">
         <svg fill="#00F0FF" viewBox="0 0 24 24" width="36.48666666666667px" height="36.48666666666667px" x="8.0px" y="12.411666666666667px">
             <path fill-rule="evenodd" d="M3 2.75A2.75 2.75 0 015.75 0h14.5a.75.75 0 01.75.75v20.5a.75.75 0 01-.75.75h-6a.75.75 0 010-1.5h5.25v-4H6A1.5 1.5 0 004.5 18v.75c0 .716.43 1.334 1.05 1.605a.75.75 0 01-.6 1.374A3.25 3.25 0 013 18.75v-16zM19.5 1.5V15H6c-.546 0-1.059.146-1.5.401V2.75c0-.69.56-1.25 1.25-1.25H19.5z">

@@ -168,6 +168,76 @@ def keyframes(i: int, tr: str, delay: str) -> str:
         f'        .card{i} {{\n            opacity: 0%;\n            animation: anim-card{i} 1.375s forwards ease-in;\n        }}\n'
     )
 
+# ---------------------------------------------------------------- 常态持续(idle)动效
+# 每张卡入场动画一次后,idle 层持续循环;两类互不抢同一个 animation 属性(挂不同元素)
+OVERVIEW_IDLE = {0: "vbeam", 1: "breathe", 2: "flick", 3: "float", 4: "pulse"}
+REPO_IDLE = {0: "hbeam", 1: "gflick", 2: "breathe", 3: "float", 4: "bflash", 5: "hbeamy"}
+# 总览 5 子卡横向 band 左边界(宽 170)
+OV_BAND = [22, 193, 363, 534, 704]
+
+def overview_idle_css() -> str:
+    s = ""
+    # 0 竖向扫描光束
+    s += ('            @keyframes idle-vbeam { 0%{transform:translateY(-256px)} 100%{transform:translateY(256px)} }\n'
+          '            .idle-vbeam { animation: idle-vbeam 2.4s linear infinite; }\n')
+    # 1 边框呼吸
+    s += ('            @keyframes idle-breathe { 0%,100%{opacity:0.12} 50%{opacity:0.85} }\n'
+          '            .idle-breathe { animation: idle-breathe 2.2s ease-in-out infinite; }\n')
+    # 2 图标故障闪
+    s += ('            @keyframes idle-flick { 0%{opacity:1} 7%{opacity:0.25} 9%{opacity:1} 38%{opacity:0.5} 41%{opacity:1} 70%{opacity:0.3} 73%{opacity:1} 100%{opacity:1} }\n'
+          '            .idle-flick { animation: idle-flick 3.2s steps(1,end) infinite; }\n')
+    # 3 图标浮动
+    s += ('            @keyframes idle-float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-7px)} }\n'
+          '            .idle-float { animation: idle-float 2.6s ease-in-out infinite; }\n')
+    # 4 顶部辉光脉冲
+    s += ('            @keyframes idle-pulse { 0%,100%{opacity:0.2} 50%{opacity:0.95} }\n'
+          '            .idle-pulse { animation: idle-pulse 1.8s ease-in-out infinite; }\n')
+    return s
+
+def overview_idle_deco(i: int) -> str:
+    left = OV_BAND[i]
+    if OVERVIEW_IDLE[i] == "vbeam":
+        return (f'        <g clip-path="url(#clipBig)"><rect class="idle-vbeam" x="{left+82}px" y="0" width="5px" height="256px" fill="{CP["cyan"]}" opacity="0.45" /></g>\n')
+    if OVERVIEW_IDLE[i] == "breathe":
+        return (f'        <rect class="idle-breathe" x="{left+2}px" y="3px" width="166px" height="250px" fill="none" stroke="{CP["yellow"]}" stroke-width="1.5" />\n')
+    if OVERVIEW_IDLE[i] == "pulse":
+        return (f'        <line class="idle-pulse" x1="{left+22}px" y1="0" x2="{left+148}px" y2="0" stroke="{CP["yellow"]}" stroke-width="3" />\n')
+    # flick / float 作用在图标元素本身(在卡片组内加 class),此处不另加装饰
+    return ""
+
+def repo_idle_css() -> str:
+    s = ""
+    # 横向扫描光束(青)
+    s += ('            @keyframes idle-hbeam { 0%{transform:translateX(0)} 100%{transform:translateX(407px)} }\n'
+          '            .idle-hbeam { animation: idle-hbeam 2.8s linear infinite; }\n')
+    # 横向扫描光束(黄,反向相位)
+    s += ('            @keyframes idle-hbeamy { 0%{transform:translateX(407px)} 100%{transform:translateX(0)} }\n'
+          '            .idle-hbeamy { animation: idle-hbeamy 3.1s linear infinite; }\n')
+    # 故障闪(品红)
+    s += ('            @keyframes idle-gflick { 0%{opacity:0.3} 6%{opacity:1} 8%{opacity:0.3} 36%{opacity:1} 39%{opacity:0.25} 66%{opacity:1} 69%{opacity:0.4} 100%{opacity:0.3} }\n'
+          '            .idle-gflick { animation: idle-gflick 3.4s steps(1,end) infinite; }\n')
+    # 边框呼吸(黄)
+    s += ('            @keyframes idle-breathe-r { 0%,100%{opacity:0.12} 50%{opacity:0.8} }\n'
+          '            .idle-breathe-r { animation: idle-breathe-r 2.3s ease-in-out infinite; }\n')
+    # 边框流光闪
+    s += ('            @keyframes idle-bflash { 0%,92%{opacity:0.15} 95%{opacity:0.9} 97%{opacity:0.2} 100%{opacity:0.15} }\n'
+          '            .idle-bflash { animation: idle-bflash 2.0s steps(1,end) infinite; }\n')
+    return s
+
+def repo_idle_deco(idx: int) -> str:
+    kind = REPO_IDLE[idx]
+    if kind == "hbeam":
+        return f'        <g clip-path="url(#clipSmall)"><rect class="idle-hbeam" x="0" y="0" width="16px" height="140px" fill="{CP["cyan"]}" opacity="0.4" /></g>\n'
+    if kind == "hbeamy":
+        return f'        <g clip-path="url(#clipSmall)"><rect class="idle-hbeamy" x="0" y="0" width="16px" height="140px" fill="{CP["yellow"]}" opacity="0.4" /></g>\n'
+    if kind == "gflick":
+        return f'        <rect class="idle-gflick" x="3px" y="3px" width="415px" height="134px" fill="none" stroke="{CP["magenta"]}" stroke-width="1" />\n'
+    if kind == "breathe":
+        return f'        <rect class="idle-breathe-r" x="3px" y="3px" width="415px" height="134px" fill="none" stroke="{CP["yellow"]}" stroke-width="1.5" />\n'
+    if kind == "bflash":
+        return f'        <rect class="idle-bflash" x="3px" y="3px" width="415px" height="134px" fill="none" stroke="{CP["cyan"]}" stroke-width="1.5" />\n'
+    return ""
+
 def gen_overview(stats: dict) -> str:
     css = (
         '            ' + FONT_IMPORT + '\n'
@@ -181,20 +251,23 @@ def gen_overview(stats: dict) -> str:
     )
     for i, (_, _, _, tr, _) in enumerate(OVERVIEW_CARDS):
         css += "\n" + keyframes(i, tr, "")
+    css += "\n" + overview_idle_css()
     cards = []
     for i, (key, label, icons, _, delay) in enumerate(OVERVIEW_CARDS):
         num = fmt_num(stats.get(key, 0))
+        idle_cls = "idle-flick" if OVERVIEW_IDLE[i] == "flick" else ("idle-float" if OVERVIEW_IDLE[i] == "float" else "")
         icon_paths = "".join(
             f'            <path fill-rule="evenodd" d="{p}">\n            </path>\n' for p in icons
         )
         cards.append(
             f'        <g class="card{i}" width="170.23999999999998px" height="256px" style="animation-delay: {delay}">\n'
-            f'        <svg viewBox="0 0 24 24" width="76.8px" height="76.8px" x="46.71999999999999px" fill="{CP["cyan"]}">\n'
+            f'        <svg class="{idle_cls}" viewBox="0 0 24 24" width="76.8px" height="76.8px" x="46.71999999999999px" fill="{CP["cyan"]}">\n'
             f'{icon_paths}        </svg>\n'
             f'        <text y="107.52px" x="85.11999999999999px" font-size="30.72px" text-anchor="middle" fill="{CP["yellow"]}" font-family="{FONT_NUM}" font-weight="700" letter-spacing="1px" filter="url(#neonGlowY)">\n            {esc(num)}\n        </text>\n'
             f'        <text y="130.56px" x="85.11999999999999px" font-size="15.36px" text-anchor="middle" fill="{CP["cyan"]}" font-family="{FONT_BODY}" font-weight="500" letter-spacing="2px">\n            {esc(label)}\n        </text>\n'
             f'    </g>\n'
         )
+    idle_decos = "".join(overview_idle_deco(i) for i in range(5))
     return (
         "<?xml version='1.0' encoding='utf-8'?>\n"
         '<svg xmlns="http://www.w3.org/2000/svg" width="896.0px" height="256px" viewBox="0 0 896.0 256">\n'
@@ -226,6 +299,7 @@ def gen_overview(stats: dict) -> str:
         '            <mask id="overviewContents">\n'
         f'                <path d="{PATH_BIG}" fill="white" />\n'
         '            </mask>\n'
+        + idle_decos
         + "".join(cards)
         + "        </svg>\n</svg>\n"
     )
@@ -290,11 +364,12 @@ def gen_repo_card(repo: dict, index: int = 0) -> str:
     stars = repo.get("stars", 0)
     forks = repo.get("forks", 0)
 
+    icon_idle = ' class="idle-float"' if REPO_IDLE[index] == "float" else ""
     fade_blocks = []
     # 图标 + 名称 + owner
     fade_blocks.append(
         f'        <g class="repo-info-fade" style="animation-delay: {f(g1)}">\n'
-        f'        <svg fill="{CP["cyan"]}" viewBox="0 0 24 24" width="36.48666666666667px" height="36.48666666666667px" x="8.0px" y="12.411666666666667px">\n'
+        f'        <svg{icon_idle} fill="{CP["cyan"]}" viewBox="0 0 24 24" width="36.48666666666667px" height="36.48666666666667px" x="8.0px" y="12.411666666666667px">\n'
         f'            <path fill-rule="evenodd" d="{ICON_REPO_1}">\n            </path>\n'
         f'            <path d="{ICON_REPO_2}">\n            </path>\n'
         f'        </svg>\n'
@@ -360,6 +435,7 @@ def gen_repo_card(repo: dict, index: int = 0) -> str:
         "            .repo-info-fade {\n                opacity: 0%;\n                animation: repo-info-fade-in 1.25s forwards ease-out;\n            }\n"
         "            .repo-info-background-fade {\n                opacity: 0%;\n                animation: repo-info-fade-in 1.25s forwards ease-in-out;\n            }\n"
         + repo_keyframes(cls, index)
+        + repo_idle_css()
         + "        </style>\n"
         "        <defs>\n"
         f'            <linearGradient id="repoInfoGradient" gradientTransform="rotate(90) translate(-{grad_n},0) scale(4,2)">\n'
@@ -387,6 +463,7 @@ def gen_repo_card(repo: dict, index: int = 0) -> str:
         '            <mask id="repoContents">\n'
         f'                <path d="{PATH_SMALL}" fill="white" />\n'
         '            </mask>\n'
+        + repo_idle_deco(index)
         + body
         + f'<g class="repo-info-fade" style="animation-delay: {f(g3)}">{lang_circles}</g>'
         + "\n</svg>\n"
