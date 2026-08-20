@@ -21,7 +21,7 @@ jobs:
     steps:
     - uses: actions/checkout@v6
     - name: Set up JDK 17
-      uses: actions/setup-java@v4
+      uses: actions/setup-java@v5
       with:
         java-version: '17'
         distribution: 'temurin'
@@ -30,6 +30,8 @@ jobs:
       run: mvn --batch-mode verify
 
     - name: Compile statistics
+      id: compile
+      continue-on-error: true
       run: |
         java --version
         java -cp target/gs-1.0-jar-with-dependencies.jar Main
@@ -43,9 +45,13 @@ jobs:
       run: |
         git config --global user.name 'github-statistics'
         git config --global user.email 'applex250@users.noreply.github.com'
-        git add output || true
-        git commit -m 'Update outputs' || true
-        git push
+        git add output generated_readme.md || true
+        if git diff --cached --quiet; then
+          echo "No changes to commit"
+        else
+          git commit -m 'Update outputs'
+          git push
+        fi
 
     - name: Generate profile README (jsdelivr CDN + commit SHA)
       run: |
@@ -67,5 +73,9 @@ jobs:
         git config --global user.name 'applex250'
         git config --global user.email 'applex250@users.noreply.github.com'
         git add README.md
-        git commit -m 'Update README.md' || true
-        git push
+        if git diff --cached --quiet; then
+          echo "No changes to commit"
+        else
+          git commit -m 'Update README.md'
+          git push
+        fi
