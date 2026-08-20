@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='utf-8'?>
 <svg xmlns="http://www.w3.org/2000/svg" width="421px" height="140.33333333333334px" viewBox="0 0 421 140.33333333333334">
         <style>
-            @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Rajdhani:wght@400;500;600&display=swap');
+            @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&amp;family=Rajdhani:wght@400;500;600&amp;display=swap');
             * {
                 font-family: "Rajdhani", "Trebuchet MS", sans-serif;
             }

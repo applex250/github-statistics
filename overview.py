@@ -91,7 +91,7 @@ CP = {
 
 FONT_IMPORT = (
     "@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900"
-    "&family=Rajdhani:wght@400;500;600&display=swap');"
+    "&amp;family=Rajdhani:wght@400;500;600&amp;display=swap');"
 )
 FONT_NUM  = "'Orbitron','Trebuchet MS',sans-serif"
 FONT_BODY = "'Rajdhani','Trebuchet MS',sans-serif"
