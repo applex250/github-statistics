@@ -76,6 +76,37 @@ ICON_FORK_1 = "M12 21a1.75 1.75 0 110-3.5 1.75 1.75 0 010 3.5zm-3.25-1.75a3.25 3
 ICON_FORK_2 = "M6.5 7.75v1A2.25 2.25 0 008.75 11h6.5a2.25 2.25 0 002.25-2.25v-1H19v1a3.75 3.75 0 01-3.75 3.75h-6.5A3.75 3.75 0 015 8.75v-1h1.5z"
 ICON_FORK_3 = "M11.25 16.25v-5h1.5v5h-1.5z"
 
+# ---------------------------------------------------------------- CP2077 palette
+CP = {
+    "bg":        "#0D0D12",
+    "grad_top":  "#111219",
+    "grad_mid":  "#16181F",
+    "grad_bot":  "#0D0D12",
+    "yellow":    "#FCEE0A",
+    "cyan":      "#00F0FF",
+    "magenta":   "#FF003C",
+    "text_dim":  "#B8BCC4",
+    "border":    "#FCEE0A",
+}
+
+FONT_IMPORT = (
+    "@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900"
+    "&family=Rajdhani:wght@400;500;600&display=swap');"
+)
+FONT_NUM  = "'Orbitron','Trebuchet MS',sans-serif"
+FONT_BODY = "'Rajdhani','Trebuchet MS',sans-serif"
+
+# 切角多边形：总览卡 896x256（左上22 + 右下22）
+PATH_BIG = "M22,0 H896 V234 L874,256 H0 V22 Z"
+PATH_BIG_INNER = "M25,3 H893 V231 L871,253 H3 V25 Z"
+# 仓库卡 421x140
+PATH_SMALL = "M22,0 H421 V118 L399,140 H0 V22 Z"
+PATH_SMALL_INNER = "M25,3 H418 V115 L396,137 H3 V25 Z"
+# 卡角夹折线
+CORNER_TL = "M0,34 L0,22 L12,10"
+CORNER_BR = "M896,222 L896,234 L884,246"
+CORNER_BR_S = "M421,106 L421,118 L409,130"
+
 # ---------------------------------------------------------------- overview.svg
 OVERVIEW_CARDS = [
     # (key, label, [icon_paths], anim_translate, anim_delay)
