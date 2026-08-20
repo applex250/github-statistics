@@ -184,8 +184,9 @@ def gen_overview(stats: dict) -> str:
         f'            <path d="{CORNER_BR}" fill="none" stroke="{CP["yellow"]}" stroke-width="3" />\n'
         '            <mask id="overviewContents">\n'
         f'                <path d="{PATH_BIG}" fill="white" />\n'
+        '            </mask>\n'
         + "".join(cards)
-        + "        </mask>\n        </svg>\n</svg>\n"
+        + "        </svg>\n</svg>\n"
     )
 
 # ---------------------------------------------------------------- repo 卡片
@@ -299,8 +300,8 @@ def gen_repo_card(repo: dict, index: int = 0) -> str:
         f'            <path d="{CORNER_BR_S}" fill="none" stroke="{CP["yellow"]}" stroke-width="3" />\n'
         '            <mask id="repoContents">\n'
         f'                <path d="{PATH_SMALL}" fill="white" />\n'
+        '            </mask>\n'
         + body
-        + "\n        </mask>"
         + f'<g class="repo-info-fade" style="animation-delay: {f(g3)}">{lang_circles}</g>'
         + "\n</svg>\n"
     )
