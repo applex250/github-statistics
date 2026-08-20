@@ -23,12 +23,22 @@
         </style>
         <defs>
             <linearGradient id="repoInfoGradient" gradientTransform="rotate(90) translate(-1,0) scale(4,2)">
-                <stop offset="0%" stop-color="#0a1628" />
-                <stop offset="50%" stop-color="#1A3870" />
-                <stop offset="100%" stop-color="#4A8AC4" />
+                <stop offset="0%" stop-color="#1A3870" stop-opacity="0.72" />
+                <stop offset="52%" stop-color="#2D5F9E" stop-opacity="0.52" />
+                <stop offset="100%" stop-color="#4A8AC4" stop-opacity="0.38" />
             </linearGradient>
+            <linearGradient id="cardHighlight" gradientTransform="rotate(90)">
+                <stop offset="0%" stop-color="#ffffff" stop-opacity="0.20" />
+                <stop offset="20%" stop-color="#ffffff" stop-opacity="0.05" />
+                <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+            </linearGradient>
+            <filter id="cardShadow" x="-8%" y="-8%" width="116%" height="116%">
+                <feDropShadow dx="0" dy="3" stdDeviation="10" flood-color="#0a1628" flood-opacity="0.26" />
+            </filter>
         </defs>
-        <rect class="repo-info-background-fade" style="animation-delay: 0.75s" width="421px" height="140.33333333333334px" rx="15px" fill="url('#repoInfoGradient')" mask="url('#repoContents')" />
+        <rect width="421px" height="140.33333333333334px" rx="15px" fill="#0d1117" opacity="0.0" />
+        <rect class="repo-info-background-fade" style="animation-delay: 0.75s" width="421px" height="140.33333333333334px" rx="15px" fill="url('#repoInfoGradient')" stroke="rgba(255,255,255,0.13)" stroke-width="1.1" filter="url(#cardShadow)" mask="url('#repoContents')" />
+        <rect width="421px" height="140.33333333333334px" rx="15px" fill="url('#cardHighlight')" opacity="0.9" mask="url('#repoContents')" style="pointer-events:none" />
         <mask id="repoContents">
             <rect width="421px" height="140.33333333333334px" rx="15px" fill="white" />
         <g class="repo-info-fade" style="animation-delay: 1.25s">

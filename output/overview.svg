@@ -111,12 +111,23 @@
         <svg width="896.0px" height="256px">
             <defs>
                 <linearGradient id="overviewGradient" gradientTransform="rotate(90)">
-                    <stop offset="0%" stop-color="#0a1628" />
-                    <stop offset="50%" stop-color="#1A3870" />
-                    <stop offset="100%" stop-color="#4A8AC4" />
+                    <stop offset="0%" stop-color="#1A3870" stop-opacity="0.72" />
+                    <stop offset="52%" stop-color="#2D5F9E" stop-opacity="0.52" />
+                    <stop offset="100%" stop-color="#4A8AC4" stop-opacity="0.38" />
                 </linearGradient>
+                <linearGradient id="overviewHighlight" gradientTransform="rotate(90)">
+                    <stop offset="0%" stop-color="#ffffff" stop-opacity="0.22" />
+                    <stop offset="18%" stop-color="#ffffff" stop-opacity="0.06" />
+                    <stop offset="100%" stop-color="#ffffff" stop-opacity="0" />
+                </linearGradient>
+                <filter id="frostedShadow" x="-8%" y="-8%" width="116%" height="116%">
+                    <feDropShadow dx="0" dy="4" stdDeviation="14" flood-color="#0a1628" flood-opacity="0.28" />
+                    <feGaussianBlur stdDeviation="0.4" />
+                </filter>
             </defs>
-            <rect class="overview-background" width="896.0px" height="256px" rx="15px" fill="url('#overviewGradient')" mask="url('#overviewContents')" />
+            <rect width="896.0px" height="256px" rx="15px" fill="#0d1117" opacity="0.0" />
+            <rect class="overview-background" width="896.0px" height="256px" rx="15px" fill="url('#overviewGradient')" stroke="rgba(255,255,255,0.14)" stroke-width="1.2" filter="url(#frostedShadow)" style="backdrop-filter: blur(16px);" mask="url('#overviewContents')" />
+            <rect width="896.0px" height="256px" rx="15px" fill="url('#overviewHighlight')" opacity="0.9" mask="url('#overviewContents')" style="pointer-events:none" />
             <mask id="overviewContents">
                 <rect width="896.0px" height="256px" rx="15px" fill="white" />
         <g class="card0" width="170.23999999999998px" height="256px" style="animation-delay: 1.5s">
