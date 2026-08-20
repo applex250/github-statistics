@@ -118,13 +118,54 @@ OVERVIEW_CARDS = [
 ]
 
 def keyframes(i: int, tr: str, delay: str) -> str:
+    # 每张总览子卡独立 keyframes:前缀唯一 + 互异入场动效
+    # 0:glitch 故障闪烁  1:右滑入  2:弹跳上抛  3:左滑入  4:顶部坠落
+    if i == 0:
+        return (
+            f'        @keyframes anim-card{i} {{\n'
+            f'            0% {{ opacity: 0%; }}\n'
+            f'            18% {{ opacity: 100%; transform: translate({tr},0); }}\n'
+            f'            30% {{ opacity: 25%; transform: translate({tr},0) translateX(-6px); }}\n'
+            f'            42% {{ opacity: 100%; transform: translate({tr},0) translateX(6px); }}\n'
+            f'            54% {{ opacity: 30%; transform: translate({tr},0) translateX(-3px); }}\n'
+            f'            70% {{ opacity: 100%; transform: translate({tr},0); }}\n'
+            f'            100% {{ opacity: 100%; transform: translate({tr},0); }}\n'
+            f'        }}\n'
+            f'        .card{i} {{\n            opacity: 0%;\n            animation: anim-card{i} 1.8s forwards steps(1,end);\n        }}\n'
+        )
+    if i == 1:
+        return (
+            f'        @keyframes anim-card{i} {{\n'
+            f'            0% {{ opacity: 0%; transform: translate({tr},0) translateX(60px); }}\n'
+            f'            100% {{ opacity: 100%; transform: translate({tr},0) translateX(0); }}\n'
+            f'        }}\n'
+            f'        .card{i} {{\n            opacity: 0%;\n            animation: anim-card{i} 1.375s forwards ease-out;\n        }}\n'
+        )
+    if i == 2:
+        return (
+            f'        @keyframes anim-card{i} {{\n'
+            f'            0% {{ opacity: 0%; transform: translate({tr},0) translateY(40px); }}\n'
+            f'            60% {{ opacity: 100%; transform: translate({tr},0) translateY(-10px); }}\n'
+            f'            80% {{ transform: translate({tr},0) translateY(4px); }}\n'
+            f'            100% {{ opacity: 100%; transform: translate({tr},0) translateY(0); }}\n'
+            f'        }}\n'
+            f'        .card{i} {{\n            opacity: 0%;\n            animation: anim-card{i} 1.5s forwards cubic-bezier(.28,.84,.42,1);\n        }}\n'
+        )
+    if i == 3:
+        return (
+            f'        @keyframes anim-card{i} {{\n'
+            f'            0% {{ opacity: 0%; transform: translate({tr},0) translateX(-60px); }}\n'
+            f'            100% {{ opacity: 100%; transform: translate({tr},0) translateX(0); }}\n'
+            f'        }}\n'
+            f'        .card{i} {{\n            opacity: 0%;\n            animation: anim-card{i} 1.375s forwards ease-out;\n        }}\n'
+        )
+    # i == 4 顶部坠落
     return (
-        f'        @keyframes fade-in-slide-up-card{i} {{\n'
-        f'            0% {{\n                transform: translate({tr}, 29.5%);\n                opacity: 0%;\n            }}\n'
-        f'            67% {{\n                transform: translate({tr}, 24.5%);\n            }}\n'
-        f'            100% {{\n                transform: translate({tr}, 24.5%);\n                opacity: 100%;\n            }}\n'
+        f'        @keyframes anim-card{i} {{\n'
+        f'            0% {{ opacity: 0%; transform: translate({tr},0) translateY(-50px); }}\n'
+        f'            100% {{ opacity: 100%; transform: translate({tr},0) translateY(0); }}\n'
         f'        }}\n'
-        f'        .card{i} {{\n            opacity: 0%;\n            animation: fade-in-slide-up-card{i} 1.375s forwards ease-out;\n        }}\n'
+        f'        .card{i} {{\n            opacity: 0%;\n            animation: anim-card{i} 1.375s forwards ease-in;\n        }}\n'
     )
 
 def gen_overview(stats: dict) -> str:
@@ -190,8 +231,52 @@ def gen_overview(stats: dict) -> str:
     )
 
 # ---------------------------------------------------------------- repo 卡片
+REPO_ANIMS = [
+    # (name, css_keyframes(index_unused, tr_placeholder), animation_class)
+    # 6 张仓库卡各一种,均与总览 5 种不重复
+    "slide-up",    # 0 上滑入
+    "glitch",      # 1 故障闪烁
+    "slide-right", # 2 右侧滑入
+    "slide-left",  # 3 左侧滑入
+    "bounce",      # 4 弹跳回弹
+    "drop",        # 5 顶部坠落
+]
+
+def repo_keyframes(cls: str, idx: int) -> str:
+    """返回单张仓库卡的 @keyframes + class 定义(前缀含 idx 保证唯一)"""
+    n = f"repo{idx}"
+    if cls == "slide-up":
+        return (f'            @keyframes {n} {{ 0%{{opacity:0%;transform:translateY(28px)}} '
+                f'100%{{opacity:100%;transform:translateY(0)}} }}\n'
+                f'            .{n} {{ opacity:0%; animation:{n} 1.3s forwards ease-out; }}\n')
+    if cls == "glitch":
+        return (f'            @keyframes {n} {{ 0%{{opacity:0%}} 20%{{opacity:100%}} '
+                f'34%{{opacity:20%;transform:translateX(-5px)}} 48%{{opacity:100%;transform:translateX(5px)}} '
+                f'62%{{opacity:30%}} 80%{{opacity:100%}} 100%{{opacity:100%}} }}\n'
+                f'            .{n} {{ opacity:0%; animation:{n} 1.8s forwards steps(1,end); }}\n')
+    if cls == "slide-right":
+        return (f'            @keyframes {n} {{ 0%{{opacity:0%;transform:translateX(70px)}} '
+                f'100%{{opacity:100%;transform:translateX(0)}} }}\n'
+                f'            .{n} {{ opacity:0%; animation:{n} 1.3s forwards ease-out; }}\n')
+    if cls == "slide-left":
+        return (f'            @keyframes {n} {{ 0%{{opacity:0%;transform:translateX(-70px)}} '
+                f'100%{{opacity:100%;transform:translateX(0)}} }}\n'
+                f'            .{n} {{ opacity:0%; animation:{n} 1.3s forwards ease-out; }}\n')
+    if cls == "bounce":
+        return (f'            @keyframes {n} {{ 0%{{opacity:0%;transform:translateY(36px)}} '
+                f'55%{{opacity:100%;transform:translateY(-12px)}} 78%{{transform:translateY(5px)}} '
+                f'100%{{opacity:100%;transform:translateY(0)}} }}\n'
+                f'            .{n} {{ opacity:0%; animation:{n} 1.5s forwards cubic-bezier(.28,.84,.42,1); }}\n')
+    # drop
+    return (f'            @keyframes {n} {{ 0%{{opacity:0%;transform:translateY(-50px)}} '
+            f'100%{{opacity:100%;transform:translateY(0)}} }}\n'
+            f'            .{n} {{ opacity:0%; animation:{n} 1.3s forwards ease-in; }}\n')
+
 def gen_repo_card(repo: dict, index: int = 0) -> str:
-    # 入场错峰:delay 随卡片在 repositories.txt 的序号递增(0.25s × (index+1)),内容组依次 +0.5s
+    # 每张仓库卡:独立入场动效(cls 按 index 取,各不相同),内容组入场做轻微错峰
+    cls = REPO_ANIMS[index % len(REPO_ANIMS)]
+    anim_cls = f"repo{index}"
+    # 入场错峰:delay 随卡片序号递增(0.25s × (index+1)),内容组依次 +0.5s
     bg = 0.25 * (index + 1)
     g1 = bg + 0.5   # 图标/名称
     g2 = bg + 1.0   # 描述
@@ -274,7 +359,8 @@ def gen_repo_card(repo: dict, index: int = 0) -> str:
         "            @keyframes repo-info-fade-in {\n                0% {\n                    opacity: 0%;\n                }\n                100% {\n                    opacity: 100%;\n                }\n            }\n"
         "            .repo-info-fade {\n                opacity: 0%;\n                animation: repo-info-fade-in 1.25s forwards ease-out;\n            }\n"
         "            .repo-info-background-fade {\n                opacity: 0%;\n                animation: repo-info-fade-in 1.25s forwards ease-in-out;\n            }\n"
-        "        </style>\n"
+        + repo_keyframes(cls, index)
+        + "        </style>\n"
         "        <defs>\n"
         f'            <linearGradient id="repoInfoGradient" gradientTransform="rotate(90) translate(-{grad_n},0) scale(4,2)">\n'
         f'                <stop offset="0%" stop-color="{CP["grad_top"]}" stop-opacity="0.92" />\n'
@@ -292,7 +378,7 @@ def gen_repo_card(repo: dict, index: int = 0) -> str:
         '                </pattern>\n'
         f'                <clipPath id="clipSmall"><path d="{PATH_SMALL}" /></clipPath>\n'
         "        </defs>\n"
-        f'            <path class="repo-info-background-fade" style="animation-delay: ' + f(bg) + f'" d="{PATH_SMALL}" fill="url(\'#repoInfoGradient\')" stroke="rgba(252,238,10,0.7)" stroke-width="1.2" clip-path="url(#clipSmall)" mask="url(\'#repoContents\')" />\n'
+        f'            <path class="{anim_cls}" style="animation-delay: ' + f(bg) + f'" d="{PATH_SMALL}" fill="url(\'#repoInfoGradient\')" stroke="rgba(252,238,10,0.7)" stroke-width="1.2" clip-path="url(#clipSmall)" mask="url(\'#repoContents\')" />\n'
         f'            <path d="{PATH_SMALL_INNER}" fill="none" stroke="{CP["cyan"]}" stroke-width="0.75" opacity="0.6" />\n'
         f'            <path d="{PATH_SMALL}" fill="url(\'#scanlines\')" clip-path="url(#clipSmall)" mask="url(\'#repoContents\')" style="pointer-events:none" />\n'
         f'            <line x1="22" y1="0" x2="399" y2="0" stroke="{CP["yellow"]}" stroke-width="2" opacity="0.5" />\n'

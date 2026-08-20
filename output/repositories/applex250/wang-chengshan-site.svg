@@ -21,6 +21,8 @@
                 opacity: 0%;
                 animation: repo-info-fade-in 1.25s forwards ease-in-out;
             }
+            @keyframes repo5 { 0%{opacity:0%;transform:translateY(-50px)} 100%{opacity:100%;transform:translateY(0)} }
+            .repo5 { opacity:0%; animation:repo5 1.3s forwards ease-in; }
         </style>
         <defs>
             <linearGradient id="repoInfoGradient" gradientTransform="rotate(90) translate(-2,0) scale(4,2)">
@@ -39,7 +41,7 @@
                 </pattern>
                 <clipPath id="clipSmall"><path d="M22,0 H421 V118 L399,140 H0 V22 Z" /></clipPath>
         </defs>
-            <path class="repo-info-background-fade" style="animation-delay: 1.5s" d="M22,0 H421 V118 L399,140 H0 V22 Z" fill="url('#repoInfoGradient')" stroke="rgba(252,238,10,0.7)" stroke-width="1.2" clip-path="url(#clipSmall)" mask="url('#repoContents')" />
+            <path class="repo5" style="animation-delay: 1.5s" d="M22,0 H421 V118 L399,140 H0 V22 Z" fill="url('#repoInfoGradient')" stroke="rgba(252,238,10,0.7)" stroke-width="1.2" clip-path="url(#clipSmall)" mask="url('#repoContents')" />
             <path d="M25,3 H418 V115 L396,137 H3 V25 Z" fill="none" stroke="#00F0FF" stroke-width="0.75" opacity="0.6" />
             <path d="M22,0 H421 V118 L399,140 H0 V22 Z" fill="url('#scanlines')" clip-path="url(#clipSmall)" mask="url('#repoContents')" style="pointer-events:none" />
             <line x1="22" y1="0" x2="399" y2="0" stroke="#FCEE0A" stroke-width="2" opacity="0.5" />
