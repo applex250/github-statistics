@@ -116,10 +116,10 @@ def gen_overview(stats: dict) -> str:
         )
         cards.append(
             f'        <g class="card{i}" width="170.23999999999998px" height="256px" style="animation-delay: {delay}">\n'
-            f'        <svg viewBox="0 0 24 24" width="76.8px" height="76.8px" x="46.71999999999999px" fill="black">\n'
+            f'        <svg viewBox="0 0 24 24" width="76.8px" height="76.8px" x="46.71999999999999px" fill="white">\n'
             f'{icon_paths}        </svg>\n'
-            f'        <text y="107.52px" x="85.11999999999999px" font-size="30.72px" text-anchor="middle" fill="black">\n            {esc(num)}\n        </text>\n'
-            f'        <text y="130.56px" x="85.11999999999999px" font-size="15.36px" text-anchor="middle" fill="black">\n            {esc(label)}\n        </text>\n'
+            f'        <text y="107.52px" x="85.11999999999999px" font-size="30.72px" text-anchor="middle" fill="white">\n            {esc(num)}\n        </text>\n'
+            f'        <text y="130.56px" x="85.11999999999999px" font-size="15.36px" text-anchor="middle" fill="white">\n            {esc(label)}\n        </text>\n'
             f'    </g>\n'
         )
     return (
@@ -172,12 +172,12 @@ def gen_repo_card(repo: dict, index: int = 0) -> str:
     # 图标 + 名称 + owner
     fade_blocks.append(
         f'        <g class="repo-info-fade" style="animation-delay: {f(g1)}">\n'
-        f'        <svg fill="black" viewBox="0 0 24 24" width="36.48666666666667px" height="36.48666666666667px" x="8.0px" y="12.411666666666667px">\n'
+        f'        <svg fill="white" viewBox="0 0 24 24" width="36.48666666666667px" height="36.48666666666667px" x="8.0px" y="12.411666666666667px">\n'
         f'            <path fill-rule="evenodd" d="{ICON_REPO_1}">\n            </path>\n'
         f'            <path d="{ICON_REPO_2}">\n            </path>\n'
         f'        </svg>\n'
-        f'            <text fill="black" x="52.90666666666667px" y="28.55px" width="396.0" height="21.05px" font-size="21.05px">\n                {esc(name)}\n            </text>\n'
-        f'            <text fill="black" x="52.90666666666667px" y="43.98666666666667px" width="396.0" height="12.63px" font-size="12.63px">\n                {esc(owner)}\n            </text>\n'
+        f'            <text fill="white" x="52.90666666666667px" y="28.55px" width="396.0" height="21.05px" font-size="21.05px">\n                {esc(name)}\n            </text>\n'
+        f'            <text fill="white" x="52.90666666666667px" y="43.98666666666667px" width="396.0" height="12.63px" font-size="12.63px">\n                {esc(owner)}\n            </text>\n'
         f'        </g>\n'
     )
     # 描述
@@ -186,7 +186,7 @@ def gen_repo_card(repo: dict, index: int = 0) -> str:
     for i, line in enumerate(desc_lines):
         y = y0 + 15.436666666666667 * i
         desc_block += (
-            f'            <text fill="black" x="12.5px" y="{y}px" width="396.0" height="12.63px" font-size="12.63px">\n'
+            f'            <text fill="white" x="12.5px" y="{y}px" width="396.0" height="12.63px" font-size="12.63px">\n'
             f'                {esc(line)}\n            </text>\n'
         )
     desc_block += "        </g>"
@@ -197,19 +197,19 @@ def gen_repo_card(repo: dict, index: int = 0) -> str:
     for idx, lang in enumerate(languages[:2]):
         lx = 28.638333333333335 + idx * 129.68166666666666
         lang_names += (
-            f'<text fill="black" x="{lx}px" y="123.51833333333335px" width="{max(6.5, len(lang.get("name",""))*6.50445):.4f}px" height="12.63px" font-size="12.63px" dominant-baseline="middle">\n                {esc(lang.get("name",""))}\n            </text>\n'
+            f'<text fill="white" x="{lx}px" y="123.51833333333335px" width="{max(6.5, len(lang.get("name",""))*6.50445):.4f}px" height="12.63px" font-size="12.63px" dominant-baseline="middle">\n                {esc(lang.get("name",""))}\n            </text>\n'
         )
     star_x = 335.01939999999996
     fork_x = 386.2972
     star_icon_x = 316.07439999999997
     fork_icon_x = 367.3522
     footer = (
-        f'        <text fill="black" x="{fork_x}px" y="123.51833333333335px" width="{max(6.5, len(str(forks))*6.5676):.4f}px" height="15.436666666666667px" font-size="12.63px" dominant-baseline="middle">\n                    {esc(str(forks))}\n                </text>\n'
-        f'        <svg fill="black" viewBox="0 0 24 24" width="15.436666666666667px" height="15.436666666666667px" x="{fork_icon_x}px" y="114.80000000000001px">\n'
+        f'        <text fill="white" x="{fork_x}px" y="123.51833333333335px" width="{max(6.5, len(str(forks))*6.5676):.4f}px" height="15.436666666666667px" font-size="12.63px" dominant-baseline="middle">\n                    {esc(str(forks))}\n                </text>\n'
+        f'        <svg fill="white" viewBox="0 0 24 24" width="15.436666666666667px" height="15.436666666666667px" x="{fork_icon_x}px" y="114.80000000000001px">\n'
         f'            <path fill-rule="evenodd" d="{ICON_FORK_1}" /><path fill-rule="evenodd" d="{ICON_FORK_2}"></path><path fill-rule="evenodd" d="{ICON_FORK_3}">\n            </path>\n'
         f'        </svg>\n'
-        f'                <text fill="black" x="{star_x}px" y="123.51833333333335px" width="{max(6.5, len(str(stars))*6.5676):.4f}px" height="15.436666666666667px" font-size="12.63px" dominant-baseline="middle">\n                    {esc(str(stars))}\n                </text>\n'
-        f'        <svg fill="black" viewBox="0 0 24 24" width="15.436666666666667px" height="15.436666666666667px" x="{star_icon_x}px" y="114.80000000000001px">\n'
+        f'                <text fill="white" x="{star_x}px" y="123.51833333333335px" width="{max(6.5, len(str(stars))*6.5676):.4f}px" height="15.436666666666667px" font-size="12.63px" dominant-baseline="middle">\n                    {esc(str(stars))}\n                </text>\n'
+        f'        <svg fill="white" viewBox="0 0 24 24" width="15.436666666666667px" height="15.436666666666667px" x="{star_icon_x}px" y="114.80000000000001px">\n'
         f'            <path fill-rule="evenodd" d="{ICON_STAR}">\n            </path>\n'
         f'        </svg>\n'
     )
