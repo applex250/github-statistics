@@ -3,7 +3,7 @@
 <p style="margin:6px 0 0;font-size:22px;font-weight:600;letter-spacing:-.02em;line-height:1.2">applex250</p>
 <p style="margin:6px 0 0;font-size:13px;color:#636c76;line-height:1.6">少即是多 · 毛玻璃 · 留白</p>
 <table style="width:100%;border-collapse:separate;border-spacing:10px 0;margin-top:16px"><tr>
-<td align="center" style="background:rgba(0,0,0,0.04);border:1px solid rgba(0,0,0,0.08);border-radius:16px;padding:14px 10px;width:25%"><span style="font-size:18px;font-weight:600">712</span><br/><span style="font-size:11px;color:#636c76">Contributions</span></td>
+<td align="center" style="background:rgba(0,0,0,0.04);border:1px solid rgba(0,0,0,0.08);border-radius:16px;padding:14px 10px;width:25%"><span style="font-size:18px;font-weight:600">717</span><br/><span style="font-size:11px;color:#636c76">Contributions</span></td>
 <td align="center" style="background:rgba(0,0,0,0.04);border:1px solid rgba(0,0,0,0.08);border-radius:16px;padding:14px 10px;width:25%"><span style="font-size:18px;font-weight:600">33</span><br/><span style="font-size:11px;color:#636c76">Repos</span></td>
 <td align="center" style="background:rgba(0,0,0,0.04);border:1px solid rgba(0,0,0,0.08);border-radius:16px;padding:14px 10px;width:25%"><span style="font-size:18px;font-weight:600">29</span><br/><span style="font-size:11px;color:#636c76">Stars</span></td>
 <td align="center" style="background:rgba(0,0,0,0.04);border:1px solid rgba(0,0,0,0.08);border-radius:16px;padding:14px 10px;width:25%"><span style="font-size:18px;font-weight:600">3</span><br/><span style="font-size:11px;color:#636c76">PRs</span></td>
