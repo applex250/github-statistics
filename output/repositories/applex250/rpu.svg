@@ -23,9 +23,9 @@
         </style>
         <defs>
             <linearGradient id="repoInfoGradient" gradientTransform="rotate(90) translate(-0,0) scale(4,2)">
-                <stop offset="0%" stop-color="#c1b9e8" />
-                <stop offset="50%" stop-color="#f39189" />
-                <stop offset="100%" stop-color="#fdb367" />
+                <stop offset="0%" stop-color="#0a1628" />
+                <stop offset="50%" stop-color="#1A3870" />
+                <stop offset="100%" stop-color="#4A8AC4" />
             </linearGradient>
         </defs>
         <rect class="repo-info-background-fade" style="animation-delay: 0.25s" width="421px" height="140.33333333333334px" rx="15px" fill="url('#repoInfoGradient')" mask="url('#repoContents')" />

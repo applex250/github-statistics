@@ -129,8 +129,9 @@ def gen_overview(stats: dict) -> str:
         '        <svg width="896.0px" height="256px">\n'
         '            <defs>\n'
         '                <linearGradient id="overviewGradient" gradientTransform="rotate(90)">\n'
-        '                    <stop offset="0%" stop-color="#92a7da" />\n'
-        '                    <stop offset="100%" stop-color="#c1b9e8" />\n'
+        '                    <stop offset="0%" stop-color="#0a1628" />\n'
+        '                    <stop offset="50%" stop-color="#1A3870" />\n'
+        '                    <stop offset="100%" stop-color="#4A8AC4" />\n'
         "                </linearGradient>\n"
         "            </defs>\n"
         '            <rect class="overview-background" width="896.0px" height="256px" rx="15px" fill="url(\'#overviewGradient\')" mask="url(\'#overviewContents\')" />\n'
@@ -227,9 +228,9 @@ def gen_repo_card(repo: dict, index: int = 0) -> str:
         "        </style>\n"
         "        <defs>\n"
         f'            <linearGradient id="repoInfoGradient" gradientTransform="rotate(90) translate(-{grad_n},0) scale(4,2)">\n'
-        '                <stop offset="0%" stop-color="#c1b9e8" />\n'
-        '                <stop offset="50%" stop-color="#f39189" />\n'
-        '                <stop offset="100%" stop-color="#fdb367" />\n'
+        '                <stop offset="0%" stop-color="#0a1628" />\n'
+        '                <stop offset="50%" stop-color="#1A3870" />\n'
+        '                <stop offset="100%" stop-color="#4A8AC4" />\n'
         "            </linearGradient>\n"
         "        </defs>\n"
         '        <rect class="repo-info-background-fade" style="animation-delay: ' + f(bg) + '" width="421px" height="140.33333333333334px" rx="15px" fill="url(\'#repoInfoGradient\')" mask="url(\'#repoContents\')" />\n'
