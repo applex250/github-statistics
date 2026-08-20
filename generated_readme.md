@@ -1,79 +1,25 @@
-<div class="profile-wrap">
-<style>
-.profile-wrap{max-width:896px;margin:0 auto;font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;}
-.profile-head{padding:22px 4px 8px;text-align:left}
-.profile-kpi{font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:#636c76}
-.profile-title{margin:8px 0 0; font-size:22px; font-weight:600; letter-spacing:-0.02em; line-height:1.2}
-.profile-desc{margin:8px 0 0; font-size:13px; color:#636c76; line-height:1.6}
-.stats-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:16px}
-.stat{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:16px;padding:14px 16px;flex:1 1 120px;min-width:120px}
-.stat b{font-size:18px;font-weight:600}
-.stat span{font-size:12px;color:#636c76}
-.repo-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
-@media(max-width:640px){.repo-grid{grid-template-columns:1fr}}
-.card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:18px;padding:18px 16px;min-height:96px}
-.card .name{font-size:14px;font-weight:600}
-.card .owner{font-size:11px;color:#636c76}
-.card .desc{margin-top:8px;font-size:12px;color:#24292f;line-height:1.6;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.card .meta{margin-top:12px;font-size:11px;color:#636c76}
-</style>
-<div class="profile-head">
-  <div class="profile-kpi">Profile · Harness Minimal</div>
-  <div class="profile-title">applex250</div>
-  <div class="profile-desc">少即是多 · 毛玻璃 · 留白</div>
-</div>
-<div class="stats-row">
-  <div class="stat"><b>0</b><br/><span>Issues</span></div>
-  <div class="stat"><b>3</b><br/><span>PRs</span></div>
-  <div class="stat"><b>713</b><br/><span>Contributions</span></div>
-  <div class="stat"><b>33</b><br/><span>Repos</span></div>
-  <div class="stat"><b>29</b><br/><span>Stars</span></div>
-</div>
-<div class="repo-grid">
-  <a href="https://github.com/applex250/rpu" style="text-decoration:none;color:inherit">
-    <div class="card">
-      <div class="name">rpu</div>
-      <div class="owner">applex250</div>
-      <div class="desc">RK3588 YOLOv8-Seg 三核NPU并行推理</div>
-      <div class="meta">C · C++ · ★ 0 · ⑂ 0</div>
-    </div>
-  </a>
-  <a href="https://github.com/applex250/myyolo" style="text-decoration:none;color:inherit">
-    <div class="card">
-      <div class="name">myyolo</div>
-      <div class="owner">applex250</div>
-      <div class="meta">Python · Shell · ★ 0 · ⑂ 0</div>
-    </div>
-  </a>
-  <a href="https://github.com/applex250/paleo_ai" style="text-decoration:none;color:inherit">
-    <div class="card">
-      <div class="name">paleo_ai</div>
-      <div class="owner">applex250</div>
-      <div class="meta">TypeScript · Python · ★ 0 · ⑂ 0</div>
-    </div>
-  </a>
-  <a href="https://github.com/applex250/mtrans" style="text-decoration:none;color:inherit">
-    <div class="card">
-      <div class="name">mtrans</div>
-      <div class="owner">applex250</div>
-      <div class="desc">基于MinerU和智谱 GLM-4.7 的英文学术文献 Markdown 翻译工具，支持智能分段、并发翻译和 Web 可视化界面</div>
-      <div class="meta">JavaScript · CSS · ★ 22 · ⑂ 14</div>
-    </div>
-  </a>
-  <a href="https://github.com/applex250/clawdbot-watchdog" style="text-decoration:none;color:inherit">
-    <div class="card">
-      <div class="name">clawdbot-watchdog</div>
-      <div class="owner">applex250</div>
-      <div class="desc">openclaw Gateway 监控守护进程 - 自动恢复和实时状态监控</div>
-      <div class="meta">JavaScript · Batchfile · ★ 2 · ⑂ 0</div>
-    </div>
-  </a>
-  <a href="https://github.com/applex250/wang-chengshan-site" style="text-decoration:none;color:inherit">
-    <div class="card">
-      <div class="name">wang-chengshan-site</div>
-      <div class="owner">applex250</div>
-      <div class="meta">HTML · SCSS · ★ 0 · ⑂ 0</div>
-    </div>
-  </a>
-</div>
+<div align="left">
+<p style="margin:18px 0 0;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:#636c76">Profile · Harness Minimal</p>
+<p style="margin:6px 0 0;font-size:22px;font-weight:600;letter-spacing:-.02em;line-height:1.2">applex250</p>
+<p style="margin:6px 0 0;font-size:13px;color:#636c76;line-height:1.6">少即是多 · 毛玻璃 · 留白</p>
+<table style="width:100%;border-collapse:separate;border-spacing:10px 0;margin-top:16px"><tr>
+<td align="center" style="background:rgba(0,0,0,0.04);border:1px solid rgba(0,0,0,0.08);border-radius:16px;padding:14px 10px;width:25%"><span style="font-size:18px;font-weight:600">712</span><br/><span style="font-size:11px;color:#636c76">Contributions</span></td>
+<td align="center" style="background:rgba(0,0,0,0.04);border:1px solid rgba(0,0,0,0.08);border-radius:16px;padding:14px 10px;width:25%"><span style="font-size:18px;font-weight:600">33</span><br/><span style="font-size:11px;color:#636c76">Repos</span></td>
+<td align="center" style="background:rgba(0,0,0,0.04);border:1px solid rgba(0,0,0,0.08);border-radius:16px;padding:14px 10px;width:25%"><span style="font-size:18px;font-weight:600">29</span><br/><span style="font-size:11px;color:#636c76">Stars</span></td>
+<td align="center" style="background:rgba(0,0,0,0.04);border:1px solid rgba(0,0,0,0.08);border-radius:16px;padding:14px 10px;width:25%"><span style="font-size:18px;font-weight:600">3</span><br/><span style="font-size:11px;color:#636c76">PRs</span></td>
+</tr></table>
+<table style="width:100%;border-collapse:separate;border-spacing:12px;margin-top:14px">
+<tr>
+<td width="50%" style="vertical-align:top"><a href="https://github.com/applex250/rpu" style="text-decoration:none;color:inherit"><table style="width:100%;background:rgba(0,0,0,0.04);border:1px solid rgba(0,0,0,0.08);border-radius:18px"><tr><td style="padding:16px"><div style="font-size:14px;font-weight:600">rpu</div><div style="font-size:11px;color:#636c76">applex250</div><div style="margin-top:8px;font-size:12px;color:#24292f;line-height:1.5">RK3588 YOLOv8-Seg 三核NPU并行推理</div><div style="margin-top:10px;font-size:11px;color:#636c76">C · C++ · ★ 0</div></td></tr></table></a></td>
+<td width="50%" style="vertical-align:top"><a href="https://github.com/applex250/myyolo" style="text-decoration:none;color:inherit"><table style="width:100%;background:rgba(0,0,0,0.04);border:1px solid rgba(0,0,0,0.08);border-radius:18px"><tr><td style="padding:16px"><div style="font-size:14px;font-weight:600">myyolo</div><div style="font-size:11px;color:#636c76">applex250</div><div style="margin-top:10px;font-size:11px;color:#636c76">Python · Shell · ★ 0</div></td></tr></table></a></td>
+</tr>
+<tr>
+<td width="50%" style="vertical-align:top"><a href="https://github.com/applex250/paleo_ai" style="text-decoration:none;color:inherit"><table style="width:100%;background:rgba(0,0,0,0.04);border:1px solid rgba(0,0,0,0.08);border-radius:18px"><tr><td style="padding:16px"><div style="font-size:14px;font-weight:600">paleo_ai</div><div style="font-size:11px;color:#636c76">applex250</div><div style="margin-top:10px;font-size:11px;color:#636c76">TypeScript · Python · ★ 0</div></td></tr></table></a></td>
+<td width="50%" style="vertical-align:top"><a href="https://github.com/applex250/mtrans" style="text-decoration:none;color:inherit"><table style="width:100%;background:rgba(0,0,0,0.04);border:1px solid rgba(0,0,0,0.08);border-radius:18px"><tr><td style="padding:16px"><div style="font-size:14px;font-weight:600">mtrans</div><div style="font-size:11px;color:#636c76">applex250</div><div style="margin-top:8px;font-size:12px;color:#24292f;line-height:1.5">基于MinerU和智谱 GLM-4.7 的英文学术文献 Markdown 翻译工具，支持智能分段、并发翻译和 Web 可视化界面</div><div style="margin-top:10px;font-size:11px;color:#636c76">JavaScript · CSS · ★ 22</div></td></tr></table></a></td>
+</tr>
+<tr>
+<td width="50%" style="vertical-align:top"><a href="https://github.com/applex250/clawdbot-watchdog" style="text-decoration:none;color:inherit"><table style="width:100%;background:rgba(0,0,0,0.04);border:1px solid rgba(0,0,0,0.08);border-radius:18px"><tr><td style="padding:16px"><div style="font-size:14px;font-weight:600">clawdbot-watchdog</div><div style="font-size:11px;color:#636c76">applex250</div><div style="margin-top:8px;font-size:12px;color:#24292f;line-height:1.5">openclaw Gateway 监控守护进程 - 自动恢复和实时状态监控</div><div style="margin-top:10px;font-size:11px;color:#636c76">JavaScript · Batchfile · ★ 2</div></td></tr></table></a></td>
+<td width="50%" style="vertical-align:top"><a href="https://github.com/applex250/wang-chengshan-site" style="text-decoration:none;color:inherit"><table style="width:100%;background:rgba(0,0,0,0.04);border:1px solid rgba(0,0,0,0.08);border-radius:18px"><tr><td style="padding:16px"><div style="font-size:14px;font-weight:600">wang-chengshan-site</div><div style="font-size:11px;color:#636c76">applex250</div><div style="margin-top:10px;font-size:11px;color:#636c76">HTML · SCSS · ★ 0</div></td></tr></table></a></td>
+</tr>
+</table>
 </div>
