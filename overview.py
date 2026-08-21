@@ -261,10 +261,10 @@ def gen_overview(stats: dict) -> str:
         )
         cards.append(
             f'        <g class="card{i}" width="170.23999999999998px" height="256px" style="animation-delay: {delay}">\n'
-            f'        <svg class="{idle_cls}" viewBox="0 0 24 24" width="76.8px" height="76.8px" x="46.71999999999999px" fill="{CP["cyan"]}">\n'
+            f'        <svg class="{idle_cls}" viewBox="0 0 24 24" width="76.8px" height="76.8px" x="46.71999999999999px" y="18px" fill="{CP["cyan"]}">\n'
             f'{icon_paths}        </svg>\n'
-            f'        <text y="107.52px" x="85.11999999999999px" font-size="30.72px" text-anchor="middle" fill="{CP["yellow"]}" font-family="{FONT_NUM}" font-weight="700" letter-spacing="1px" filter="url(#neonGlowY)">\n            {esc(num)}\n        </text>\n'
-            f'        <text y="130.56px" x="85.11999999999999px" font-size="15.36px" text-anchor="middle" fill="{CP["cyan"]}" font-family="{FONT_BODY}" font-weight="500" letter-spacing="2px">\n            {esc(label)}\n        </text>\n'
+            f'        <text y="125.52px" x="85.11999999999999px" font-size="30.72px" text-anchor="middle" fill="{CP["yellow"]}" font-family="{FONT_NUM}" font-weight="700" letter-spacing="1px" filter="url(#neonGlowY)">\n            {esc(num)}\n        </text>\n'
+            f'        <text y="148.56px" x="85.11999999999999px" font-size="15.36px" text-anchor="middle" fill="{CP["cyan"]}" font-family="{FONT_BODY}" font-weight="500" letter-spacing="2px">\n            {esc(label)}\n        </text>\n'
             f'    </g>\n'
         )
     idle_decos = "".join(overview_idle_deco(i) for i in range(5))
@@ -366,7 +366,7 @@ def gen_repo_card(repo: dict, index: int = 0) -> str:
 
     icon_idle = ' class="idle-float"' if REPO_IDLE[index] == "float" else ""
     fade_blocks = []
-    # 图标 + 名称 + owner
+    # 图标 + 名称 + owner (全体内容由 return 处的 translate(0,10) 统一下移)
     fade_blocks.append(
         f'        <g class="repo-info-fade" style="animation-delay: {f(g1)}">\n'
         f'        <svg{icon_idle} fill="{CP["cyan"]}" viewBox="0 0 24 24" width="36.48666666666667px" height="36.48666666666667px" x="8.0px" y="12.411666666666667px">\n'
@@ -464,8 +464,10 @@ def gen_repo_card(repo: dict, index: int = 0) -> str:
         f'                <path d="{PATH_SMALL}" fill="white" />\n'
         '            </mask>\n'
         + repo_idle_deco(index)
+        + f'<g transform="translate(0,10)">'
         + body
         + f'<g class="repo-info-fade" style="animation-delay: {f(g3)}">{lang_circles}</g>'
+        + '</g>'
         + "\n</svg>\n"
     )
 
