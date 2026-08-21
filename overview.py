@@ -37,6 +37,18 @@ def fmt_num(n: int) -> str:
 def esc(s: str) -> str:
     return html.escape(s or "", quote=True)
 
+def ghost_paths(icons: list) -> str:
+    """图标 markup:先输出品红故障重影层(偏移+降透明),再输出继承青色的主层。"""
+    out = ""
+    for p in icons:
+        out += (
+            f'            <path fill-rule="evenodd" d="{p}" fill="{CP["magenta"]}" '
+            f'opacity="0.55" transform="translate(0.7,-0.5)" />\n'
+        )
+    for p in icons:
+        out += f'            <path fill-rule="evenodd" d="{p}">\n            </path>\n'
+    return out
+
 def wrap_desc(text: str, max_chars: int = 69) -> list:
     """按单词边界把描述截成最多 2 行,每行不超过 max_chars 字符(与原版 main.py 一致:69 字符 ≈ 396px)。"""
     if not text:
@@ -62,19 +74,65 @@ def wrap_desc(text: str, max_chars: int = 69) -> list:
         lines[1] = lines[1][: max_chars - 3].rstrip() + "..."
     return lines
 
-# ---------------------------------------------------------------- 图标 path
-ICON_REPO_1 = "M3 2.75A2.75 2.75 0 015.75 0h14.5a.75.75 0 01.75.75v20.5a.75.75 0 01-.75.75h-6a.75.75 0 010-1.5h5.25v-4H6A1.5 1.5 0 004.5 18v.75c0 .716.43 1.334 1.05 1.605a.75.75 0 01-.6 1.374A3.25 3.25 0 013 18.75v-16zM19.5 1.5V15H6c-.546 0-1.059.146-1.5.401V2.75c0-.69.56-1.25 1.25-1.25H19.5z"
-ICON_REPO_2 = "M7 18.25a.25.25 0 01.25-.25h5a.25.25 0 01.25.25v5.01a.25.25 0 01-.397.201l-2.206-1.604a.25.25 0 00-.294 0L7.397 23.46a.25.25 0 01-.397-.2v-5.01z"
-ICON_ISSUES_1 = "M17.28 9.28a.75.75 0 00-1.06-1.06l-5.97 5.97-2.47-2.47a.75.75 0 00-1.06 1.06l3 3a.75.75 0 001.06 0l6.5-6.5z"
-ICON_ISSUES_2 = "M12 1C5.925 1 1 5.925 1 12s4.925 11 11 11 11-4.925 11-11S18.075 1 12 1zM2.5 12a9.5 9.5 0 1119 0 9.5 9.5 0 01-19 0z"
-ICON_PR_1 = "M4.75 3a1.75 1.75 0 100 3.5 1.75 1.75 0 000-3.5zM1.5 4.75a3.25 3.25 0 116.5 0 3.25 3.25 0 01-6.5 0zM4.75 17.5a1.75 1.75 0 100 3.5 1.75 1.75 0 000-3.5zM1.5 19.25a3.25 3.25 0 116.5 0 3.25 3.25 0 01-6.5 0zm17.75-1.75a1.75 1.75 0 100 3.5 1.75 1.75 0 000-3.5zM16 19.25a3.25 3.25 0 116.5 0 3.25 3.25 0 01-6.5 0z"
-ICON_PR_2 = "M4.75 7.25A.75.75 0 015.5 8v8A.75.75 0 014 16V8a.75.75 0 01.75-.75zm8.655-5.53a.75.75 0 010 1.06L12.185 4h4.065A3.75 3.75 0 0120 7.75v8.75a.75.75 0 01-1.5 0V7.75a2.25 2.25 0 00-2.25-2.25h-4.064l1.22 1.22a.75.75 0 01-1.061 1.06l-2.5-2.5a.75.75 0 010-1.06l2.5-2.5a.75.75 0 011.06 0z"
-ICON_CONTRIB = "M12 2.5c-3.81 0-6.5 2.743-6.5 6.119 0 1.536.632 2.572 1.425 3.56.172.215.347.422.527.635l.096.112c.21.25.427.508.63.774.404.531.783 1.128.995 1.834a.75.75 0 01-1.436.432c-.138-.46-.397-.89-.753-1.357a18.354 18.354 0 00-.582-.714l-.092-.11c-.18-.212-.37-.436-.555-.667C4.87 12.016 4 10.651 4 8.618 4 4.363 7.415 1 12 1s8 3.362 8 7.619c0 2.032-.87 3.397-1.755 4.5-.185.23-.375.454-.555.667l-.092.109c-.21.248-.405.481-.582.714-.356.467-.615.898-.753 1.357a.75.75 0 01-1.437-.432c.213-.706.592-1.303.997-1.834.202-.266.419-.524.63-.774l.095-.112c.18-.213.355-.42.527-.634.793-.99 1.425-2.025 1.425-3.561C18.5 5.243 15.81 2.5 12 2.5zM9.5 21.75a.75.75 0 01.75-.75h3.5a.75.75 0 010 1.5h-3.5a.75.75 0 01-.75-.75zM8.75 18a.75.75 0 000 1.5h6.5a.75.75 0 000-1.5h-6.5z"
-ICON_STAR = "M12 .25a.75.75 0 01.673.418l3.058 6.197 6.839.994a.75.75 0 01.415 1.279l-4.948 4.823 1.168 6.811a.75.75 0 01-1.088.791L12 18.347l-6.117 3.216a.75.75 0 01-1.088-.79l1.168-6.812-4.948-4.823a.75.75 0 01.416-1.28l6.838-.993L11.328.668A.75.75 0 0112 .25zm0 2.445L9.44 7.882a.75.75 0 01-.565.41l-5.725.832 4.143 4.038a.75.75 0 01.215.664l-.978 5.702 5.121-2.692a.75.75 0 01.698 0l5.12 2.692-.977-5.702a.75.75 0 01.215-.664l4.143-4.038-5.725-.831a.75.75 0 01-.565-.41L12 2.694z"
-# fork 图标(三个 path,与样例一致)
-ICON_FORK_1 = "M12 21a1.75 1.75 0 110-3.5 1.75 1.75 0 010 3.5zm-3.25-1.75a3.25 3.25 0 106.5 0 3.25 3.25 0 00-6.5 0zm-3-12.75a1.75 1.75 0 110-3.5 1.75 1.75 0 010 3.5zM2.5 4.75a3.25 3.25 0 106.5 0 3.25 3.25 0 00-6.5 0zM18.25 6.5a1.75 1.75 0 110-3.5 1.75 1.75 0 010 3.5zM15 4.75a3.25 3.25 0 106.5 0 3.25 3.25 0 00-6.5 0z"
-ICON_FORK_2 = "M6.5 7.75v1A2.25 2.25 0 008.75 11h6.5a2.25 2.25 0 002.25-2.25v-1H19v1a3.75 3.75 0 01-3.75 3.75h-6.5A3.75 3.75 0 015 8.75v-1h1.5z"
-ICON_FORK_3 = "M11.25 16.25v-5h1.5v5h-1.5z"
+# ---------------------------------------------------------------- 图标 path(CP2077 手绘几何风)
+# Issues:切角警示三角 + 感叹号 + 边框故障缺口
+ICON_ISSUES = (
+    "M11.0,3.9 L13.0,3.9 L21.26,19.6 L20.6,21 L3.4,21 L2.74,19.6 Z "
+    "M11.37,7.4 L12.63,7.4 L18.42,18.0 L18.0,18.7 L6.0,18.7 L5.58,18.0 Z "
+    "M11.15,9.2 L12.85,9.2 L12.85,14.6 L11.15,14.6 Z "
+    "M12,15.95 L12.74,16.26 L13.05,17 L12.74,17.74 L12,18.05 L11.26,17.74 L10.95,17 L11.26,16.26 Z "
+    "M5.5,13.5 L9.5,11.5 L9.5,12.6 L5.5,14.6 Z "
+    "M16.5,17.3 L20.0,15.7 L20.0,16.7 L16.5,18.3 Z"
+)
+# Pull Requests:双向切角数据交换箭头 + 电路焊盘
+ICON_PULLREQS = (
+    "M3,6.4 L13.5,6.4 L13.5,4.4 L18.9,7.49 L18.9,8.51 L13.5,11.6 L13.5,9.6 L3,9.6 Z "
+    "M21,14.4 L10.5,14.4 L10.5,12.4 L5.1,15.49 L5.1,16.51 L10.5,19.6 L10.5,17.6 L21,17.6 Z "
+    "M3,6.5 L4.06,7.06 L4.5,8 L4.06,8.94 L3,9.5 L1.94,8.94 L1.5,8 L1.94,7.06 Z "
+    "M21,14.5 L22.06,15.06 L22.5,16 L22.06,16.94 L21,17.5 L19.94,16.94 L19.5,16 L19.94,15.06 Z"
+)
+# Contributions:义体芯片(切角方框 + 引脚 + 脉冲折线)
+ICON_CONTRIB = (
+    "M8.6,7 L15.4,7 L17,8.6 L17,15.4 L15.4,17 L8.6,17 L7,15.4 L7,8.6 Z "
+    "M10.2,9.2 L13.8,9.2 L14.8,10.2 L14.8,13.8 L13.8,14.8 L10.2,14.8 L9.2,13.8 L9.2,10.2 Z "
+    "M9.4,4.2 L10.8,4.2 L10.8,7 L9.4,7 Z M13.2,4.2 L14.6,4.2 L14.6,7 L13.2,7 Z "
+    "M9.4,17 L10.8,17 L10.8,19.8 L9.4,19.8 Z M13.2,17 L14.6,17 L14.6,19.8 L13.2,19.8 Z "
+    "M4.2,9.4 L7,9.4 L7,10.8 L4.2,10.8 Z M4.2,13.2 L7,13.2 L7,14.6 L4.2,14.6 Z "
+    "M17,9.4 L19.8,9.4 L19.8,10.8 L17,10.8 Z M17,13.2 L19.8,13.2 L19.8,14.6 L17,14.6 Z "
+    "M9.7,11.7 L11.1,11.7 L11.9,10.0 L13.0,13.4 L13.7,11.7 L14.3,11.7 "
+    "L14.3,12.8 L13.7,12.8 L13.0,14.5 L11.9,11.1 L11.1,12.8 L9.7,12.8 Z"
+)
+# Repositories:三层切角存储盘片 + LED 指示孔
+ICON_REPOS = (
+    "M4.9,3.5 L20.5,3.5 L20.5,5.7 L19.1,7.1 L3.5,7.1 L3.5,4.9 Z "
+    "M17.2,4.65 L18.6,4.65 L18.6,5.95 L17.2,5.95 Z "
+    "M4.9,10.2 L20.5,10.2 L20.5,12.4 L19.1,13.8 L3.5,13.8 L3.5,11.6 Z "
+    "M17.2,11.35 L18.6,11.35 L18.6,12.65 L17.2,12.65 Z "
+    "M4.9,16.9 L20.5,16.9 L20.5,19.1 L19.1,20.5 L3.5,20.5 L3.5,18.3 Z "
+    "M17.2,18.05 L18.6,18.05 L18.6,19.35 L17.2,19.35 Z"
+)
+# Stars:四芒星火花 + 双伴星
+ICON_STAR = (
+    "M12,2.5 L14.26,9.74 L21.5,12 L14.26,14.26 L12,21.5 L9.74,14.26 L2.5,12 L9.74,9.74 Z "
+    "M19.5,2.8 L20.07,4.43 L21.7,5.0 L20.07,5.57 L19.5,7.2 L18.93,5.57 L17.3,5.0 L18.93,4.43 Z "
+    "M5,17.4 L5.42,18.58 L6.6,19 L5.42,19.42 L5,20.6 L4.58,19.42 L3.4,19 L4.58,18.58 Z"
+)
+# Fork:直角电路分支 + 焊盘
+ICON_FORK = (
+    "M11.3,4.5 L12.7,4.5 L12.7,10 L11.3,10 Z "
+    "M5.5,10 L18.5,10 L18.5,11.4 L5.5,11.4 Z "
+    "M5.5,11.4 L6.9,11.4 L6.9,16.5 L5.5,16.5 Z "
+    "M17.1,11.4 L18.5,11.4 L18.5,16.5 L17.1,16.5 Z "
+    "M12,2.9 L13.13,3.37 L13.6,4.5 L13.13,5.63 L12,6.1 L10.87,5.63 L10.4,4.5 L10.87,3.37 Z "
+    "M6.2,16.5 L7.33,16.97 L7.8,18.1 L7.33,19.23 L6.2,19.7 L5.07,19.23 L4.6,18.1 L5.07,16.97 Z "
+    "M17.8,16.5 L18.93,16.97 L19.4,18.1 L18.93,19.23 L17.8,19.7 L16.67,19.23 L16.2,18.1 L16.67,16.97 Z"
+)
+# Repo:切角六边形 + 终端提示符
+ICON_REPO = (
+    "M21.5,12 L16.75,20.23 L7.25,20.23 L2.5,12 L7.25,3.77 L16.75,3.77 Z "
+    "M9,8 L14.6,12 L9,16 L9,13.7 L11.4,12 L9,10.3 Z "
+    "M15.2,14 L17.6,14 L17.6,15.8 L15.2,15.8 Z"
+)
 
 # ---------------------------------------------------------------- CP2077 palette
 CP = {
@@ -110,10 +168,10 @@ CORNER_BR_S = "M421,106 L421,118 L409,130"
 # ---------------------------------------------------------------- overview.svg
 OVERVIEW_CARDS = [
     # (key, label, [icon_paths], anim_translate, anim_delay)
-    ("issues", "Issues", [ICON_ISSUES_1, ICON_ISSUES_2], "2.5%", "1.5s"),
-    ("pullRequests", "Pull Requests", [ICON_PR_1, ICON_PR_2], "21.5%", "1.0s"),
+    ("issues", "Issues", [ICON_ISSUES], "2.5%", "1.5s"),
+    ("pullRequests", "Pull Requests", [ICON_PULLREQS], "21.5%", "1.0s"),
     ("totalContributions", "Contributions", [ICON_CONTRIB], "40.5%", "0.5s"),
-    ("repositories", "Repositories", [ICON_REPO_1, ICON_REPO_2], "59.5%", "1.0s"),
+    ("repositories", "Repositories", [ICON_REPOS], "59.5%", "1.0s"),
     ("stars", "Stars", [ICON_STAR], "78.5%", "1.5s"),
 ]
 
@@ -256,9 +314,7 @@ def gen_overview(stats: dict) -> str:
     for i, (key, label, icons, _, delay) in enumerate(OVERVIEW_CARDS):
         num = fmt_num(stats.get(key, 0))
         idle_cls = "idle-flick" if OVERVIEW_IDLE[i] == "flick" else ("idle-float" if OVERVIEW_IDLE[i] == "float" else "")
-        icon_paths = "".join(
-            f'            <path fill-rule="evenodd" d="{p}">\n            </path>\n' for p in icons
-        )
+        icon_paths = ghost_paths(icons)
         cards.append(
             f'        <g class="card{i}" width="170.23999999999998px" height="256px" style="animation-delay: {delay}">\n'
             f'        <svg class="{idle_cls}" viewBox="0 0 24 24" width="76.8px" height="76.8px" x="46.71999999999999px" y="18px" fill="{CP["cyan"]}">\n'
@@ -370,9 +426,7 @@ def gen_repo_card(repo: dict, index: int = 0) -> str:
     fade_blocks.append(
         f'        <g class="repo-info-fade" style="animation-delay: {f(g1)}">\n'
         f'        <svg{icon_idle} fill="{CP["cyan"]}" viewBox="0 0 24 24" width="36.48666666666667px" height="36.48666666666667px" x="8.0px" y="12.411666666666667px">\n'
-        f'            <path fill-rule="evenodd" d="{ICON_REPO_1}">\n            </path>\n'
-        f'            <path d="{ICON_REPO_2}">\n            </path>\n'
-        f'        </svg>\n'
+        f'{ghost_paths([ICON_REPO])}        </svg>\n'
         f'            <text fill="{CP["yellow"]}" font-family="{FONT_NUM}" font-weight="500" letter-spacing="0.5px" x="52.90666666666667px" y="28.55px" width="396.0" height="21.05px" font-size="21.05px" filter="url(#neonGlowY)">\n                {esc(name)}\n            </text>\n'
         f'            <text fill="{CP["cyan"]}" font-family="{FONT_BODY}" x="52.90666666666667px" y="43.98666666666667px" width="396.0" height="12.63px" font-size="12.63px">\n                {esc(owner)}\n            </text>\n'
         f'        </g>\n'
@@ -403,12 +457,10 @@ def gen_repo_card(repo: dict, index: int = 0) -> str:
     footer = (
         f'        <text fill="{CP["yellow"]}" font-family="{FONT_NUM}" font-weight="500" x="{fork_x}px" y="123.51833333333335px" width="{max(6.5, len(str(forks))*6.5676):.4f}px" height="15.436666666666667px" font-size="12.63px" dominant-baseline="middle">\n                    {esc(str(forks))}\n                </text>\n'
         f'        <svg fill="{CP["cyan"]}" viewBox="0 0 24 24" width="15.436666666666667px" height="15.436666666666667px" x="{fork_icon_x}px" y="114.80000000000001px">\n'
-        f'            <path fill-rule="evenodd" d="{ICON_FORK_1}" /><path fill-rule="evenodd" d="{ICON_FORK_2}"></path><path fill-rule="evenodd" d="{ICON_FORK_3}">\n            </path>\n'
-        f'        </svg>\n'
+        f'{ghost_paths([ICON_FORK])}        </svg>\n'
         f'                <text fill="{CP["yellow"]}" font-family="{FONT_NUM}" font-weight="500" x="{star_x}px" y="123.51833333333335px" width="{max(6.5, len(str(stars))*6.5676):.4f}px" height="15.436666666666667px" font-size="12.63px" dominant-baseline="middle">\n                    {esc(str(stars))}\n                </text>\n'
         f'        <svg fill="{CP["cyan"]}" viewBox="0 0 24 24" width="15.436666666666667px" height="15.436666666666667px" x="{star_icon_x}px" y="114.80000000000001px">\n'
-        f'            <path fill-rule="evenodd" d="{ICON_STAR}">\n            </path>\n'
-        f'        </svg>\n'
+        f'{ghost_paths([ICON_STAR])}        </svg>\n'
     )
     if languages:
         fade_blocks.append(
@@ -499,11 +551,11 @@ def gen_readme(repo_list: list) -> str:
 
 # ---------------------------------------------------------------- main
 def main():
-    with open(os.path.join(OUTPUT_DIR, "stats.json")) as f:
+    with open(os.path.join(OUTPUT_DIR, "stats.json"), encoding="utf-8") as f:
         stats = json.load(f)
 
     repo_list = []
-    with open("repositories.txt") as f:
+    with open("repositories.txt", encoding="utf-8") as f:
         for line in f:
             line = line.strip()
             if line and "/" in line:
@@ -511,7 +563,7 @@ def main():
 
     os.makedirs(os.path.join(OUTPUT_DIR, "repositories"), exist_ok=True)
 
-    with open(os.path.join(OUTPUT_DIR, "overview.svg"), "w") as f:
+    with open(os.path.join(OUTPUT_DIR, "overview.svg"), "w", encoding="utf-8") as f:
         f.write(gen_overview(stats).rstrip("\n"))
 
     for index, (owner, name) in enumerate(repo_list):
@@ -519,14 +571,14 @@ def main():
         if not os.path.exists(json_path):
             print(f"[skip] 缺少 {json_path}")
             continue
-        with open(json_path) as f:
+        with open(json_path, encoding="utf-8") as f:
             repo = json.load(f)
         out_dir = os.path.join(OUTPUT_DIR, "repositories", owner)
         os.makedirs(out_dir, exist_ok=True)
-        with open(os.path.join(out_dir, name + ".svg"), "w") as f:
+        with open(os.path.join(out_dir, name + ".svg"), "w", encoding="utf-8") as f:
             f.write(gen_repo_card(repo, index).rstrip("\n"))
 
-    with open("generated_readme.md", "w") as f:
+    with open("generated_readme.md", "w", encoding="utf-8") as f:
         f.write(gen_readme(repo_list))
 
     print(f"[ok] overview.svg + {len(repo_list)} 张仓库卡片 + generated_readme.md 已生成")
