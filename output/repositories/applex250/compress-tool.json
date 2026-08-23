@@ -1,0 +1,17 @@
+{
+  "name": "compress-tool",
+  "owner": "applex250",
+  "description": "速压 · 视频/图片/音频在线压缩（浏览器本地处理，文件不上传）",
+  "languages": [
+    {
+      "name": "JavaScript",
+      "color": "#f1e05a"
+    },
+    {
+      "name": "HTML",
+      "color": "#e34c26"
+    }
+  ],
+  "stars": 0,
+  "forks": 0
+}
