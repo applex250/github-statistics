@@ -78,8 +78,8 @@
 <text fill="#B8BCC4" font-family="'Rajdhani','Trebuchet MS',sans-serif" x="28.638333333333335px" y="123.51833333333335px" width="26.0178px" height="12.63px" font-size="12.63px" dominant-baseline="middle">
                 HTML
             </text>
-<text fill="#B8BCC4" font-family="'Rajdhani','Trebuchet MS',sans-serif" x="158.32px" y="123.51833333333335px" width="26.0178px" height="12.63px" font-size="12.63px" dominant-baseline="middle">
-                SCSS
+<text fill="#B8BCC4" font-family="'Rajdhani','Trebuchet MS',sans-serif" x="158.32px" y="123.51833333333335px" width="39.0267px" height="12.63px" font-size="12.63px" dominant-baseline="middle">
+                Liquid
             </text>
         <text fill="#FCEE0A" font-family="'Orbitron','Trebuchet MS',sans-serif" font-weight="500" x="386.2972px" y="123.51833333333335px" width="6.5676px" height="15.436666666666667px" font-size="12.63px" dominant-baseline="middle">
                     0
@@ -97,5 +97,5 @@
             <path fill-rule="evenodd" d="M12,2.5 L14.26,9.74 L21.5,12 L14.26,14.26 L12,21.5 L9.74,14.26 L2.5,12 L9.74,9.74 Z M19.5,2.8 L20.07,4.43 L21.7,5.0 L20.07,5.57 L19.5,7.2 L18.93,5.57 L17.3,5.0 L18.93,4.43 Z M5,17.4 L5.42,18.58 L6.6,19 L5.42,19.42 L5,20.6 L4.58,19.42 L3.4,19 L4.58,18.58 Z">
             </path>
         </svg>
-    </g><g class="repo-info-fade" style="animation-delay: 3s"><circle cx="18.815px" cy="122.51833333333335px" r="6.315px" fill="#e34c26" opacity="65%" /><circle cx="148.49666666666667px" cy="122.51833333333335px" r="6.315px" fill="#c6538c" opacity="65%" /></g></g>
+    </g><g class="repo-info-fade" style="animation-delay: 3s"><circle cx="18.815px" cy="122.51833333333335px" r="6.315px" fill="#e34c26" opacity="65%" /><circle cx="148.49666666666667px" cy="122.51833333333335px" r="6.315px" fill="#67b8de" opacity="65%" /></g></g>
 </svg>
