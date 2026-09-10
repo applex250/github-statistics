@@ -1,0 +1,17 @@
+{
+  "name": "geobyte-site",
+  "owner": "applex250",
+  "description": "Geobyte Lab — a geology x computing lab site: local Canvas particle Earth, light/dark themes, and a clip-path page transition. Static, no build step, no third-party requests.",
+  "languages": [
+    {
+      "name": "HTML",
+      "color": "#e34c26"
+    },
+    {
+      "name": "JavaScript",
+      "color": "#f1e05a"
+    }
+  ],
+  "stars": 0,
+  "forks": 0
+}
