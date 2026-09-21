@@ -1,0 +1,13 @@
+{
+  "name": "jev-skill-laya",
+  "owner": "applex250",
+  "description": "Fork of wuyoscar/jev-skill v0.2.0 adapted to call a local keyless Laya decision API by default (no cost); OpenRouter/TypeSafe routes unchanged",
+  "languages": [
+    {
+      "name": "Python",
+      "color": "#3572A5"
+    }
+  ],
+  "stars": 0,
+  "forks": 0
+}
