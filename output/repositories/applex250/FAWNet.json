@@ -1,7 +1,7 @@
 {
   "name": "FAWNet",
   "owner": "applex250",
-  "description": "001011",
+  "description": "Frequency-Aware Wavelet Network with Complementary Supervision for Remote Sensing Image Dehazing (PyTorch). Code will be released upon acceptance.",
   "languages": [],
   "stars": 0,
   "forks": 0
