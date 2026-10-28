@@ -4,14 +4,14 @@
   "description": "DeepSeek Harness 滑动变阻器皮肤",
   "languages": [
     {
-      "name": "JavaScript",
-      "color": "#f1e05a"
-    },
-    {
       "name": "TypeScript",
       "color": "#3178c6"
+    },
+    {
+      "name": "JavaScript",
+      "color": "#f1e05a"
     }
   ],
-  "stars": 327,
+  "stars": 332,
   "forks": 19
 }
