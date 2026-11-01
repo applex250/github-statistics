@@ -1,0 +1,17 @@
+{
+  "name": "BiliSummary",
+  "owner": "guobaren",
+  "description": "B站视频AI总结",
+  "languages": [
+    {
+      "name": "JavaScript",
+      "color": "#f1e05a"
+    },
+    {
+      "name": "CSS",
+      "color": "#663399"
+    }
+  ],
+  "stars": 6,
+  "forks": 1
+}
